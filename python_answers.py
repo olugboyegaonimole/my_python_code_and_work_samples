@@ -267,26 +267,47 @@ i = 8
 
 while i < 899:
 	print(i)
-	i += 1
+	i += 1 # the increment can occur before the 'if..break' construction
 	if i == 65:
 		break
+
+#Break statement
+u = 90
+
+while u > 0:
+	print (u)
+	if u == 56:
+		break
+	u -= 1 # the increment can occur after the 'if..break' construction
 
 #Continue statement
 u = 98
 
 while u > -87:
-	u -= 1
+	u -= 1 #the increment must occur before the 'if...continue' construction
 	if u % 2 == 0:
 		continue
-	print(u)
+	print(u) # the 'if..continue' construction above determines what is printed out here
 
+
+#Continue statement
+u = 98
+
+while u > -87:
+	u -= 1 #the increment must occur before the 'if...continue' construction
+	print(u) # the 'if..continue' construction below has no effect on this statement
+	if u % 2 == 0:
+		continue
+
+
+#continue statement
 u = 87
 
 while u>-87: #is u greater than -87?
 	if u%2 ==0: #is u an even number?
 		continue
 	print(u)
-	u -= 1 #Wrong position for increment/decrement. Increment/decrement must come before the 'if..continue' conditional. In this position, the 'continue' instruction loops infinitely
+	u -= 1 #When using the continue statement, this is the wrong position for increment/decrement. Increment/decrement must come before the 'if..continue' construction. In this position, the 'continue' instruction loops infinitely
 
 
 #LISTS
@@ -436,9 +457,29 @@ for i in range(12, 455, 23):
 
 #continue statement
 for i in range(89):
+	print(i)
+	if i == 67:
+		continue # this continues after printing the value of i specified in the if conditional
+
+#continue statement
+for i in range(89):
 	if i == 67:
 		continue
-	print(i)
+	print(i) # this continues wihtout printing the value of i specified in the if conditional
+
+
+
+#break statement
+for i in range(23):
+	print (i)
+	if i == 6:
+		break # this breaks after using the value of i specified in the if conditional
+
+#break statement
+for i in range(23):
+	if i == 6:
+		break
+	print (i) # this breaks without using the value of i specified in the if conditional
 
 
 #for else
