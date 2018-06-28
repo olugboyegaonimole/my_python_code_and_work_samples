@@ -253,6 +253,11 @@ while i > -56:
 #Infinite while loop
 #i = 8
 
+#while i==8:
+	#print('hooray')
+	#i -= 1
+
+#Infinite while loop
 #while True:
 	#print('hooray')
 	#i -= 1
@@ -266,29 +271,23 @@ while i < 899:
 	if i == 65:
 		break
 
-for number in range (2, 40):
-	for divisor in range (2, number):
-		if number % divisor == 0:
-			print(number, 'is equal to', number/divisor, '*' , divisor)
-			break
-
-		elif divisor == (number - 1):
-			print(number, 'is a prime')
-
-for number in range (2, 100):
-	for divisor in range (2, number):
-		if number % divisor == 0:
-			print(number, 'is equal to', number/divisor, '*' , divisor)
-			break
-
-	else:
-		print(number, 'is a prime')
-
 #Continue statement
-for i in range(35):
-	if i % 2 == 0:
+u = 98
+
+while u > -87:
+	u -= 1
+	if u % 2 == 0:
 		continue
-	print(i)
+	print(u)
+
+u = 87
+
+while u>-87: #is u greater than -87?
+	if u%2 ==0: #is u an even number?
+		continue
+	print(u)
+	u -= 1 #Wrong position for increment/decrement. Increment/decrement must come before the 'if..continue' conditional. In this position, the 'continue' instruction loops infinitely
+
 
 #LISTS
 
@@ -419,15 +418,14 @@ print(list(u))
 
 #FOR LOOPS
 
-#Iterate through list using while loop
+#Iterating through a list using a while loop requires more code
 mylist = [5,6,7,88,6,6,5,5,4,5,4,4]
 p = 0
-print(len(mylist))
-while p < 12:
+while p < (len(mylist)):
 	print(mylist[p])
 	p += 1	
 
-#Iterate through list using for loop
+#Iterating through a list using a for loop requires less code
 h = ['g', 'g', 'hkhkh', 'rtrtr', 'd', 'ddd']
 for i in h:
 	print(i)
@@ -435,6 +433,42 @@ for i in h:
 #Iterate through for loop using range function
 for i in range(12, 455, 23):
 	print(i)
+
+#continue statement
+for i in range(89):
+	if i == 67:
+		continue
+	print(i)
+
+
+#for else
+for item in range(2, 13): # this takes all the integers between 2 and 10
+	if 13 % item == 0: # if this is true, then the item is a factor of 10
+		print (item, 'is a factor of', 13)
+		break
+
+else:
+	print(13, 'is a prime number')
+
+
+for number in range (2, 40):
+	for divisor in range (2, number):
+		if number % divisor == 0:
+			print(number, 'is equal to', number/divisor, '*' , divisor)
+			break
+
+		elif divisor == (number - 1):
+			print(number, 'is a prime')
+
+for number in range (2, 100):
+	for divisor in range (2, number):
+		if number % divisor == 0:
+			print(number, 'is equal to', number/divisor, '*' , divisor)
+			break
+
+	else:
+		print(number, 'is a prime')
+
 
 #SIMPLE CALCULATOR
 
