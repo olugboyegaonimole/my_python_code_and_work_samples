@@ -2156,6 +2156,9 @@ Food.toplist(pizza, 'salami')
 
 
 #PROPERTIES (CREATED USING THE @PROPERTY DECORATOR)
+
+#A PROPERTY SIMPLY MEANS AN INSTANCE ATTRIBUTE THAT IS DEFINED AS A METHOD AND PROTECTED USING THE @PROPERTY DECORATOR
+
 #properties allow you to do two things:
 #1. call a method the way you would call an instance attribute
 #2. customize access to the method
@@ -2167,8 +2170,12 @@ class Monkey():
 		self.sound = sound
 	
 	@property
-	def color(self):
-		return 'blue' #WHEN A SETTER IS NOT AVAILABLE THE PROPERTY MUST RETURN A LITERAL VALUE
+	def color(self): #THIS IS THE PROPERTY GETTER
+		return 'blue' 
+		#WHEN A SETTER IS NOT AVAILABLE 
+		#1. YOU DON'T ASSIGN AN INITIAL VALUE TO THE PROPERTY
+		#2. INSTEAD THE GETTER MUST RETURN A LITERAL VALUE
+
 
 koala = Monkey('yelp')
 
@@ -2188,18 +2195,20 @@ finally:
 class Cabinet():
     def __init__(self, color):
         self.color = color
-        self._material = 'wood' #THE ORIGINAL VALUE OF THE PROPERTY
+        self._material = 'wood' #THE INITIAL VALUE OF THE PROPERTY
+        #1. WHEN A SETTER IS AVAILABLE, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
+        #2. HERE, THE INITIAL VALUE IS ASSIGNED TO THE PROPERTY IN THE CONSTRUCTOR
 
     @property
-    def material(self): 
-        return self._material #WHEN A SETTER IS AVAILABLE THE PROPERTY MUST RETURN ITSELF
+    def material(self): #THIS IS THE PROPERTY GETTER
+        return self._material #WHEN A PROPERTY SETTER IS AVAILABLE THE PROPERTY GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
 
-    #THE SETTER DIRECTLY TELLS YOU THE VALUE OF THE PROPERTY OR TELLS THE VALUE OF SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
+    #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
     @material.setter
-    def material(self, value): 
+    def material(self, value): #THIS IS THE PROPERTY SETTER
         password = input('enter password (password is kombo): ')
         if password=='kombo':
-            self._material = value #HERE THE SETTER DIRECTLY TELLS YOU THE VALUE OF THE PROPERTY
+            self._material = value #HERE THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY
         else:
             raise ValueError('tiff!')
 
@@ -2208,53 +2217,59 @@ print(mycab.material)
 mycab.material = 'stone'
 print(mycab.material)
 
+
 #A SIMPLE GAME
 class Football():
 
 	class_name=''
-	desc='' #THE ORIGINAL VALUE OF THE PROPERTY
+	description='' 	#THE INITIAL VALUE OF THE PROPERTY
 	objects={}
+
+    #1. WHEN A SETTER IS AVAILABLE, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
+    #2. HERE, THE PROPERTY IS DEFINED AS A CLASS ATTRIBUTE
+    #3. THE INITIAL VALUE IS ASSIGNED TO THE PROPERTY WHEN IT IS DEFINED
+
 
 	def __init__(self, name):
 		self.name = name
 		Football.objects[self.class_name]=self
 
-	def get_desc(self):
-		print(self.class_name + '\n' + self.desc)
+	def get_description(self):
+		print(self.class_name + '\n' + self.description)
 
 class Striker(Football):
 	class_name = 'striker'
-	desc='scores goals'
+	description='scores goals'
 
 class Defender(Football):
 	class_name='defender'
-	desc='stops striker'
+	description='stops striker'
 
 class Ball(Football):
 	def __init__(self, name):
 		self.class_name='ball'
-		self._desc='hollow spherical inflated with air'
+		self._description='hollow spherical inflated with air'
 		self.status=0
 		super().__init__(name)
 
 	@property
-	def desc(self): 
+	def description(self): #THIS IS THE PROPERTY GETTER
 		if self.status==0:
-			self._desc='hollow spherical inflated with air'
+			self._description='hollow spherical inflated with air'
 		elif self.status==1:
-			self._desc = 'you beat one defender!'
+			self._description = 'you beat one defender!'
 		elif self.status==2:
-			self._desc = 'you beat another defender!'
+			self._description = 'you beat another defender!'
 		elif self.status==3:
-			self._desc = 'now you beat the goalkeeper!'
+			self._description = 'now you beat the goalkeeper!'
 		elif self.status>3:
-			self._desc = 'IT\'S IN THE BACK OF THE NET!!!!!! GOALLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!'
-		return self._desc #WHEN A SETTER IS AVAILABLE THE PROPERTY MUST RETURN ITSELF
+			self._description = 'IT\'S IN THE BACK OF THE NET!!!!!! GOALLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!'
+		return self._description #WHEN A PROPERTY SETTER IS AVAILABLE THE PROPERTY GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
 
-	#THE SETTER DIRECTLY TELLS YOU THE VALUE OF THE PROPERTY, OR TELLS YOU THE VALUE OF SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
-	@desc.setter 
-	def desc(self, value):
-		self.status = value #HERE, THE SETTER TELLS YOU THE VALUE OF SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
+    #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
+	@description.setter 
+	def description(self, value): #THIS IS THE PROPERTY SETTER
+		self.status = value #HERE, THE SETTER ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
 		
 
 
@@ -2289,7 +2304,7 @@ def say(noun):
 
 def examine(noun):
 	if noun in Football.objects:
-		Football.objects[noun].get_desc()
+		Football.objects[noun].get_description()
 	else:
 		print('there is no {} here'.format(noun))
 
@@ -2312,9 +2327,10 @@ def kick(noun):
 
 verbdict={'say':say, 'examine':examine, 'kick':kick}
 
-#while True:
-while i<3:
+while True:
+#while i<10:
 	get_input()
+
 
 #REGULAR EXPRESSIONS
 
