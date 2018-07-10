@@ -267,7 +267,7 @@ i = 8
 
 while i < 899:
 	print(i)
-	i += 1 # the increment can occur before the 'if..break' construction
+	i += 1 # BEST POSITION the increment can occur before the 'if..break' construction
 	if i == 65:
 		break
 
@@ -276,9 +276,20 @@ u = 90
 
 while u > 0:
 	print (u)
-	if u == 56:
+	if u == 57:
 		break
 	u -= 1 # the increment can occur after the 'if..break' construction
+
+
+#Break statement #this achieves the same thing as the above
+u = 90
+
+while u > 0:
+	print (u)
+	u -= 1
+	if u == 56:
+		break
+	
 
 #Continue statement
 u = 98
@@ -1324,8 +1335,11 @@ def decorator(function):
 	return wrap
 
 #simply call the decoration
-o = decorator(myfun)
-o()
+#o = decorator(myfun)
+#o()
+
+#OR
+(decorator(myfun))()
 
 #Pre-pended decorator
 #create decorator
@@ -1506,6 +1520,7 @@ print(Animal.age)
 
 
 class Dog(Animal):
+
 	def bark(self):
 		return 'yelp!'
 
@@ -1519,6 +1534,9 @@ dalma = Dog('dalma', 'bone', 'skin')
 print(dalma.name + '\'s diet is ' + dalma.diet)
 print(dalma.name + ' is covered with ' + dalma.cover)
 
+
+
+
 class Mongrel(Dog):
 	
 	def sound(self):
@@ -1531,8 +1549,11 @@ print(moimoi.name + ' is covered with ' + moimoi.cover)
 print(moimoi.name + ' makes a ' + moimoi.sound() + 'ing sound')
 
 
+
+
+
 #Create a class containing a constructor
-#In the constructor set the initial value of the instance attributes of the class's instances
+#In the constructor set the initial value of the instance objects of the class's objects
 class Animal():
 
 	def __init__(self, category, sound, food, habitat):
@@ -1551,15 +1572,15 @@ class Animal():
 
 
 
-#Create instances of the class using the class name as a function
+#Create objects of the class using the class name as a function
 tilapia = Animal('fish', 'gurgle', 'mites', 'aquatic')
 
 
-#verify the type of the instance
+#using the type method verify the type of the object 
 print(type(tilapia))
 
 
-#using the instances created, access the instance attributes and instance method
+#using the objects created, access the object attributes and object method
 print()
 print(tilapia.name)
 print(tilapia.sound)
@@ -1597,7 +1618,7 @@ ant.bodyfluid()
 
 
 
-#Create a class containing a class attribute, this can be called both from the class itself and from an instance of the class
+#Create a class containing a class attribute, this can be called both from the class itself and from an object of the class
 class Human():
 
 	headcount = 1
@@ -1711,6 +1732,7 @@ tescomilk.second()
 tescomilk.thied()
 
 #Illustrate the super() function
+#EXAMPLE 1
 class Boy():
 
 	def __init__(self, nation):
@@ -1731,6 +1753,44 @@ class LagosBoy(Boy):
 joe = LagosBoy('nigeria')
 joe.shoes2()
 joe.shoes()
+
+#EXAMPLE 2
+class Animal():
+
+	def __init__(self, name, sound):
+		self.name = name
+		self.sound = sound
+
+	def color(self):
+		return 'brown'
+
+dog = Animal('gbosko', 'ye!')
+
+print(dog.name)
+print(dog.sound)
+print(dog.color())
+
+#inheritance
+class Dog(Animal):
+
+	def color(self):
+		return 'blue'
+
+mongrel = Dog('ijapa', 'ok nau!')
+
+print(mongrel.color())
+
+#inheritance
+class Aja(Dog):
+
+	def color(self):
+		return super().color()
+
+
+ajami = Aja('okunkun', 'mummy!')
+
+print(ajami.color())
+
 
 #Magic methods, operator overloading 
 #if you try to manipulate instances of a class using an operator, Python goes into the class and invokes the magic method corresponding to that operator
@@ -1914,16 +1974,25 @@ boy._Mister__secret()
 
 #name mangling
 
+
+
 #CLASS AND STATIC METHODS
-#class method, used for creating a copy of the class
-#static method, for creating methods that can be called by the class, DOES NOT INCLUDE 'SELF' PARAMETER
+
+#CLASS METHODS, used for creating copies of the class (METHOD DEFINITION TAKES IN THE 'CLS' CONTEXT PARAMETER)
+
+#STATIC METHODS, for creating methods that can be called by the class, (METHOD DEFINITION DOES NOT TAKE IN ANY CONTEXT PARAMETERS)
+
+
+#CLASS METHOD
+
+#(CREATED USING THE @CLASSMETHOD DECORATOR)
+
 #class method eg 1
 class Animal():
 
 	def __init__(self, sound, diet):
 		self.sound = sound
 		self.diet = diet
-
 	def bmi(self):
 		print(self.diet/self.sound)
 
@@ -1960,29 +2029,40 @@ kili = Mountain.newmount(400, 3000)
 print(kili.height)
 kili.volume()
 
-#static method, for creating methods that can be called by the class
-#IT DOES NOT INCLUDE THE 'SELF' PARAMETER
+#class method  eg 3
+class Mountain():
 
-#static method eg 1 
-#this is not a static method, but here a class calls a non-static method
-#all you need is 1. include a 'self' parameter when defining the method, and,
-#2. include a class instance as an argument when the class calls the method
-class Food():
+	def __init__(self, height, base):
+		self.height = height
+		self.base = base
 
-	def __init__(self, dressing):
-		self.dressing = dressing
+	def volume(self):
+		print(self.height * self.base / 3)
 
-	def toplist(self, topping):
-		print('the topping is ' + topping)
+	@classmethod
+	def newmount(cls, width):
+		return cls(width, width)
 
-pizza = Food('fish')
-print(pizza.dressing)
+ever = Mountain(4666, 900)
+ever.volume()
 
-pizza.toplist('salami')
+flora = Mountain.newmount(3000)
+flora.volume()
 
-Food.toplist(pizza, 'salami')
+Mountain.volume(flora)
 
-#static method eg 2 
+
+
+
+
+
+#STATIC METHODS, for creating methods that can be called by the class
+
+#(CREATED USING THE @STATICMETHOD DECORATOR)
+
+#METHOD DEFINITION DOES NOT TAKE IN ANY CONTEXT PARAMETERS
+
+#static method eg 1
 class Food():
 
 	def __init__(self, dressing):
@@ -2000,7 +2080,7 @@ pizza.toplist('salami')
 
 Food.toplist('salami')
 
-#static method eg 3
+#static method eg 2
 class Food():
 
 	def __init__(self, topping):
@@ -2027,7 +2107,7 @@ n = ', '.join(ingredients)
 print('your pizza consists of %s' % n)
 print('your pizza consists of ' + n)
 
-#static method eg 4
+#static method eg 3
 class Soup():
 
 	def __init__(self, name):
@@ -2053,32 +2133,30 @@ if all(Soup.check_content(item) for item in ingredients):
 
 print('your soup contains ' + (', '.join(ingredients)))
 
-#static method eg 5
-#this is not a static method, but here a class calls a non-static method
-#all you need is 1. include a 'self' parameter when defining the method, and,
-#2. include a class instance as an argument when the class calls the method
-class Mountain():
 
-	def __init__(self, height, base):
-		self.height = height
-		self.base = base
+#"static method" eg 4
+#THIS IS ACTUALLY NOT A STATIC METHOD, but here a class calls a non-static method
+#all you need is 
+#1. include a 'self' parameter when defining the method, and,
+#2. include a class object as an argument when the class calls the method
+class Food():
 
-	def volume(self):
-		print(self.height * self.base / 3)
+	def __init__(self, dressing):
+		self.dressing = dressing
 
-	@classmethod
-	def newmount(cls, width):
-		return cls(width, width)
+	def toplist(self, topping):
+		print('the topping is ' + topping)
 
-ever = Mountain(4666, 900)
-ever.volume()
+pizza = Food('fish')
+print(pizza.dressing)
 
-flora = Mountain.newmount(3000)
-flora.volume()
+pizza.toplist('salami')
 
-Mountain.volume(flora)
+Food.toplist(pizza, 'salami')
 
-#PROPERTIES #properties allow you to do two things:
+
+#PROPERTIES (CREATED USING THE @PROPERTY DECORATOR)
+#properties allow you to do two things:
 #1. call a method the way you would call an instance attribute
 #2. customize access to the method
 
@@ -2090,7 +2168,7 @@ class Monkey():
 	
 	@property
 	def color(self):
-		return 'blue'
+		return 'blue' #WHEN A SETTER IS NOT AVAILABLE THE PROPERTY MUST RETURN A LITERAL VALUE
 
 koala = Monkey('yelp')
 
@@ -2106,22 +2184,22 @@ except:
 finally:
 	print(koala.color)
 
-#property with setter facility
+#property with setter facility (CREATED USING THE @PROPERTY AND @PROPERTYNAME.SETTER DECORATORS)
 class Cabinet():
     def __init__(self, color):
         self.color = color
         self._material = 'wood' #THE ORIGINAL VALUE OF THE PROPERTY
 
     @property
-    def material(self): #THE PROPERTY RETURNS ITSELF
-        return self._material
+    def material(self): 
+        return self._material #WHEN A SETTER IS AVAILABLE THE PROPERTY MUST RETURN ITSELF
 
+    #THE SETTER DIRECTLY TELLS YOU THE VALUE OF THE PROPERTY OR TELLS THE VALUE OF SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
     @material.setter
-    def material(self, value): #THE SETTER TELLS YOU THE VALUE OF THE PROPERTY 
-    #OR THE VALUE OF SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
+    def material(self, value): 
         password = input('enter password (password is kombo): ')
         if password=='kombo':
-            self._material = value
+            self._material = value #HERE THE SETTER DIRECTLY TELLS YOU THE VALUE OF THE PROPERTY
         else:
             raise ValueError('tiff!')
 
@@ -2134,7 +2212,7 @@ print(mycab.material)
 class Football():
 
 	class_name=''
-	desc=''
+	desc='' #THE ORIGINAL VALUE OF THE PROPERTY
 	objects={}
 
 	def __init__(self, name):
@@ -2160,7 +2238,7 @@ class Ball(Football):
 		super().__init__(name)
 
 	@property
-	def desc(self): #THE PROPERTY RETURNS ITSELF
+	def desc(self): 
 		if self.status==0:
 			self._desc='hollow spherical inflated with air'
 		elif self.status==1:
@@ -2171,12 +2249,12 @@ class Ball(Football):
 			self._desc = 'now you beat the goalkeeper!'
 		elif self.status>3:
 			self._desc = 'IT\'S IN THE BACK OF THE NET!!!!!! GOALLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!'
-		return self._desc
+		return self._desc #WHEN A SETTER IS AVAILABLE THE PROPERTY MUST RETURN ITSELF
 
-	@desc.setter #THE SETTER TELLS YOU THE VALUE OF THE PROPERTY, 
-	#OR THE VALUE OF SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
+	#THE SETTER DIRECTLY TELLS YOU THE VALUE OF THE PROPERTY, OR TELLS YOU THE VALUE OF SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
+	@desc.setter 
 	def desc(self, value):
-		self.status = value
+		self.status = value #HERE, THE SETTER TELLS YOU THE VALUE OF SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
 		
 
 
