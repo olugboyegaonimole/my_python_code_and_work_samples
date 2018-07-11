@@ -1990,9 +1990,9 @@ boy._Mister__secret()
 
 #CLASS AND STATIC METHODS
 
-#CLASS METHODS, used for creating copies of the class (METHOD DEFINITION TAKES IN THE 'CLS' CONTEXT PARAMETER)
+#CLASS METHODS, used for creating instances of the class (METHOD DEFINITION TAKES IN THE 'CLS' CONTEXT PARAMETER)
 
-#STATIC METHODS, for creating methods that can be called by the class, (METHOD DEFINITION DOES NOT TAKE IN ANY CONTEXT PARAMETERS)
+#STATIC METHODS, for creating methods that can be called both by the class and also by the instance, (METHOD DEFINITION DOES NOT TAKE IN ANY CONTEXT PARAMETERS)
 
 
 #CLASS METHOD
@@ -2005,12 +2005,15 @@ class Animal():
 	def __init__(self, sound, diet):
 		self.sound = sound
 		self.diet = diet
+	
 	def bmi(self):
 		print(self.diet/self.sound)
 
 	@classmethod
 	def newanimal(cls, height, weight):
-		return cls(height, weight)
+		return cls(height, weight) 
+		#1. WHEN RETURNING THE CLS YOU MUST RETURN THE SAME NO. OF PARAMETERS AS ARE CONTAINED IN THE CONSTRUCTOR
+		#2. THE ARGUMENT(S) YOU PASS IN WHEN CALLING YOUR CLASS METHOD WILL BE RETURNED ANYTIME YOU TRY TO ACCESS THE PARAMETERS IN THE CONSRUCTOR ABOVE
 
 dog = Animal.newanimal(45, 97897)
 
@@ -2029,7 +2032,9 @@ class Mountain():
 
 	@classmethod
 	def newmount(cls, length, breadth):
-		return cls(length, length)
+		return cls(length, length) 
+		#1. WHEN RETURNING THE CLS YOU MUST RETURN THE SAME NO. OF PARAMETERS AS ARE CONTAINED IN THE CONSTRUCTOR
+		#2. THE ARGUMENT(S) YOU PASS IN WHEN CALLING YOUR CLASS METHOD WILL BE RETURNED ANYTIME YOU TRY TO ACCESS THE PARAMETERS IN THE CONSRUCTOR ABOVE
 
 acapulco = Mountain(4000, 3000)
 
@@ -2053,7 +2058,9 @@ class Mountain():
 
 	@classmethod
 	def newmount(cls, width):
-		return cls(width, width)
+		return cls(width, width) 
+		#1. WHEN RETURNING THE CLS YOU MUST RETURN THE SAME NO. OF PARAMETERS AS ARE CONTAINED IN THE CONSTRUCTOR
+		#2. THE ARGUMENT(S) YOU PASS IN WHEN CALLING YOUR CLASS METHOD WILL BE RETURNED ANYTIME YOU TRY TO ACCESS THE PARAMETERS IN THE CONSRUCTOR ABOVE
 
 ever = Mountain(4666, 900)
 ever.volume()
@@ -2068,7 +2075,7 @@ Mountain.volume(flora)
 
 
 
-#STATIC METHODS, for creating methods that can be called by the class
+#STATIC METHODS, for creating methods that can be called both by the class and also by the instance
 
 #(CREATED USING THE @STATICMETHOD DECORATOR)
 
@@ -2147,10 +2154,11 @@ print('your soup contains ' + (', '.join(ingredients)))
 
 
 #"static method" eg 4
+
 #THIS IS ACTUALLY NOT A STATIC METHOD, but here a class calls a non-static method
-#all you need is 
-#1. include a 'self' parameter when defining the method, and,
-#2. include a class object as an argument when the class calls the method
+
+#all you need do is include the name of a class object as an argument when the class calls the method
+
 class Food():
 
 	def __init__(self, dressing):
@@ -2165,39 +2173,6 @@ print(pizza.dressing)
 pizza.toplist('salami')
 
 Food.toplist(pizza, 'salami')
-
-
-
-#CAN A CLASS ACCESS EVERY ATTRIBUTE AND METHOD THAT AN INSTANCE CAN?
-
-class Car():
-
-	size = 'large'
-
-	def __init__(self, speed, color):
-		self.speed = speed
-
-	def sound(self):
-		return 'vroom'
-
-	@property
-	def expiry(self):
-		return 23052020
-
-ijapa = Car(45, 'red')
-
-print(ijapa.size)
-print(ijapa.speed)
-print(ijapa.sound())
-print(ijapa.expiry)
-
-print(Car.size)
-#print(Car.speed(ijapa)) #error, class can't access instance attributes under any circumstances
-print(Car.sound(ijapa))
-#print(Car.expiry()) #error, a property object is not callable
-
-print(Car.expiry) #this will tell you there is a property object at a specified location in memory
-
 
 
 
@@ -2286,6 +2261,94 @@ mycab = Cabinet('green')
 print(mycab.material)
 mycab.material = 'stone'
 print(mycab.material)
+
+
+
+
+
+#FOOD FOR THOUGHT 1. CAN A CLASS ACCESS EVERY ATTRIBUTE AND METHOD THAT AN INSTANCE CAN? NO.
+
+class Car():
+
+	size = 'large'
+
+	def __init__(self, speed, color):
+		self.speed = speed
+
+	def sound(self):
+		return 'vroom'
+
+	@property
+	def expiry(self):
+		return 23052020
+
+ijapa = Car(45, 'red')
+
+print(ijapa.size)
+print(ijapa.speed)
+print(ijapa.sound())
+print(ijapa.expiry)
+
+print(Car.size)
+#print(Car.speed(ijapa)) #error, class can't access instance attributes under any circumstances
+print(Car.sound(ijapa))
+#print(Car.expiry()) #error, a property object is not callable
+
+print(Car.expiry) #this will tell you there is a property object at a specified location in memory
+
+
+
+
+#FOOD FOR THOUGHT 2. CAN AN INSTANCE ACCESS EVERY ATTRIBUTE AND METHOD THAT A CLASS CAN? YES.
+
+class Dog():
+
+	color = 'blue'
+
+	def __init__(self, name, age):
+		pass
+		self.name = name
+		self.age = age
+
+	@staticmethod
+	def sound():
+		return 'bark'
+
+	@classmethod
+	def newdog(cls, size):
+		return cls(size, size)
+
+
+dog = Dog('ajami', 67)
+print(dog.age)
+print(dog.name)
+
+
+
+print(Dog.color) #A CLASS CAN ACCESS A CLASS ATTRIBUTE
+print(dog.color) #YES, AN INSTANCE TOO CAN ACCESS A CLASS ATTRIBUTE
+
+
+
+print(Dog.sound()) #A CLASS CAN ACCESS A STATIC METHOD
+print(dog.sound()) #YES, AN INSTANCE TOO CAN ACCESS A STATIC METHOD
+
+
+
+aja = Dog.newdog(900) #A CLASS CAN ACCESS A CLASS METHOD
+print(aja.sound())
+print(aja.color)
+print(aja.age)
+print(aja.name)
+
+
+
+ojuju = dog.newdog(8700) #YES, AN INSTANCE TOO CAN ACCESS A CLASS METHOD
+print(ojuju.sound())
+print(ojuju.color)
+print(ojuju.age)
+print(ojuju.name)
+
 
 
 #A SIMPLE GAME
