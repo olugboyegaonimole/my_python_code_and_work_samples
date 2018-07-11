@@ -1317,46 +1317,58 @@ for i in infinite():
 
 #DECORATORS
 
-#Decorator #a decorator returns a wrap function as its result
+#a decorator takes in your function as its argument and returns a wrap as its result
 
-#define the function to be decorated
-def myfun():
+#create the function to be decorated
+def my_function():
 	print('hey boy!')
 
 #define the decorator
-def decorator(function):
-	#create the decoration
+#the decorator takes in your function as an argument
+def decorator(a_function):
+
+	#create your wrap and wrap what you like around your function
 	def wrap():
 		print('@@@@@@@@@@@@@@@@')
-		function()
+		a_function()
 		print('@@@@@@@@@@@@@@@@')
 
-	#return the decoration
+	#return the wrap
 	return wrap
 
-#simply call the decoration
-#o = decorator(myfun)
-#o()
+#simply call the decorator, passing in your function
+#decorated_function = decorator(my_function)
+#decorated_function()
 
 #OR
-(decorator(myfun))()
+(decorator(my_function))()
 
-#Pre-pended decorator
+
+
+
+#pre-pended decorator
+
 #create decorator
-def decorator(func):
+def decorator(a_function):
+
 	def wrap():
 		print('@@@@@@@@@@@')
-		func()
+		a_function()
 		print('@@@@@@@@@@@')
+
 	return wrap
 
 #pre-pend decorator to your function
 @decorator	
-def myfun():
+def my_function():
 	print('hallo!hallo!')
 
-#call ur function
-myfun()
+#call ur function anytime you want
+#it will execute with the decorator implemented
+my_function()
+
+
+
 
 #RECURSION
 
