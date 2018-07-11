@@ -1,51 +1,56 @@
 
+
 #A SIMPLE GAME
 class Football():
 
 	class_name=''
-	desc=''
+	description='' #THIS IS THE INITIAL VALUE OF THE PROPERTY
 	objects={}
+
+    #1. WHEN A SETTER IS USED, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
+    #2. HERE FOR EXAMPLE, THE ASSIGNMENT TAKES PLACE WHEN THE PROPERTY IS DEFINED AS A CLASS ATTRIBUTE
+
 
 	def __init__(self, name):
 		self.name = name
 		Football.objects[self.class_name]=self
 
-	def get_desc(self):
-		print(self.class_name + '\n' + self.desc)
+	def get_description(self):
+		print(self.class_name + '\n' + self.description)
 
 class Striker(Football):
 	class_name = 'striker'
-	desc='scores goals'
+	description='scores goals'
 
 class Defender(Football):
 	class_name='defender'
-	desc='stops striker'
+	description='stops striker'
 
 class Ball(Football):
 	def __init__(self, name):
 		self.class_name='ball'
-		self._desc='hollow spherical inflated with air'
+		self._description='hollow spherical inflated with air'
 		self.status=0
 		super().__init__(name)
 
 	@property
-	def desc(self): #THE PROPERTY RETURNS ITSELF
+	def description(self): #THIS IS THE GETTER
 		if self.status==0:
-			self._desc='hollow spherical inflated with air'
+			self._description='hollow spherical inflated with air'
 		elif self.status==1:
-			self._desc = 'you beat one defender!'
+			self._description = 'you beat one defender!'
 		elif self.status==2:
-			self._desc = 'you beat another defender!'
+			self._description = 'you beat another defender!'
 		elif self.status==3:
-			self._desc = 'now you beat the goalkeeper!'
+			self._description = 'now you beat the goalkeeper!'
 		elif self.status>3:
-			self._desc = 'IT\'S IN THE BACK OF THE NET!!!!!! GOALLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!'
-		return self._desc
+			self._description = 'IT\'S IN THE BACK OF THE NET!!!!!! GOALLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!'
+		return self._description #WHEN A SETTER IS USED THE GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
 
-	@desc.setter #THE SETTER TELLS YOU THE VALUE OF THE PROPERTY, 
-	#OR THE VALUE OF SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
-	def desc(self, value):
-		self.status = value
+    #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
+	@description.setter 
+	def description(self, value): #THIS IS THE SETTER
+		self.status = value #HERE, THE SETTER ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
 		
 
 
@@ -53,26 +58,14 @@ striker1 = Striker('yekini')
 defender1=Defender('uche')
 ball01=Ball('addidas')
 
-
-
-i = 0
-
+i=0
 def get_input():
 
 	global i
 
-	if i == 0:
-		print('Welcome to my football game!' + '\n' + 'Here you enter a command.' + '\n' + 'Command must comprise two words and must begin with a verb.' + '\n' + 'Only 3 verbs currently available: say, kick and examine.' + '\n' + 'Only 3 items can be examined: striker, defender or ball.' + '\n' + 'Only 1 item can be kicked: ball.' + '\n' + 'Thank you!')
-	
-		command = (input('Your command please!!!!!!!')).split(' ')
+	i += 1
 
-		i += 1
-
-
-	elif i >= 1:
-		command = (input('Your command please!:')).split(' ')
-
-
+	command = (input('enter command: ')).split(' ')
 
 	verbword = command[0]
 	if verbword in verbdict:
@@ -92,7 +85,7 @@ def say(noun):
 
 def examine(noun):
 	if noun in Football.objects:
-		Football.objects[noun].get_desc()
+		Football.objects[noun].get_description()
 	else:
 		print('there is no {} here'.format(noun))
 
@@ -116,4 +109,5 @@ def kick(noun):
 verbdict={'say':say, 'examine':examine, 'kick':kick}
 
 while True:
+#while i<10:
 	get_input()

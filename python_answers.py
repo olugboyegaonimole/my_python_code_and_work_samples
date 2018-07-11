@@ -2167,24 +2167,79 @@ pizza.toplist('salami')
 Food.toplist(pizza, 'salami')
 
 
+
+#CAN A CLASS ACCESS EVERY ATTRIBUTE AND METHOD THAT AN INSTANCE CAN?
+
+class Car():
+
+	size = 'large'
+
+	def __init__(self, speed, color):
+		self.speed = speed
+
+	def sound(self):
+		return 'vroom'
+
+	@property
+	def expiry(self):
+		return 23052020
+
+ijapa = Car(45, 'red')
+
+print(ijapa.size)
+print(ijapa.speed)
+print(ijapa.sound())
+print(ijapa.expiry)
+
+print(Car.size)
+#print(Car.speed(ijapa)) #error, class can't access instance attributes under any circumstances
+print(Car.sound(ijapa))
+#print(Car.expiry()) #error, a property object is not callable
+
+print(Car.expiry) #this will tell you there is a property object at a specified location in memory
+
+
+
+
 #PROPERTIES (CREATED USING THE @PROPERTY DECORATOR)
 
-#A PROPERTY SIMPLY MEANS AN INSTANCE ATTRIBUTE THAT IS DEFINED AS A METHOD AND PROTECTED USING THE @PROPERTY DECORATOR
+#A PROPERTY SIMPLY MEANS AN INSTANCE ATTRIBUTE THAT IS DEFINED AS A METHOD, CALLED LIKE AN ATTRIBUTE, AND PROTECTED USING THE @PROPERTY DECORATOR
 
 #properties allow you to do two things:
+
 #1. call a method the way you would call an instance attribute
 #2. customize access to the method
 
-#property without setter facility
+
+class Animal():
+
+	def __init__(self, color, age):
+		self.color = color #instance attribute
+		self.age = age #instance attribute
+
+	@property #quite simply speaking, a property is simply an instance attribute that is protected (read only, you can't modify it except you have a setter to do so)
+	def name(self):
+		return 'olu'
+
+dog  = Animal('red', 67)
+
+print(dog.name) #always remember to call your property like you would an attribute
+
+dog.age = 788
+
+print(dog.age)
+
+
+#PROPERTY WITHOUT SETTER FACILITY
 class Monkey():
 
 	def __init__(self, sound):
 		self.sound = sound
 	
 	@property
-	def color(self): #THIS IS THE PROPERTY GETTER
+	def color(self): #THIS IS THE GETTER
 		return 'blue' 
-		#WHEN A SETTER IS NOT AVAILABLE 
+		#WHEN A SETTER IS NOT USED 
 		#1. YOU DON'T ASSIGN AN INITIAL VALUE TO THE PROPERTY
 		#2. INSTEAD THE GETTER MUST RETURN A LITERAL VALUE
 
@@ -2203,21 +2258,24 @@ except:
 finally:
 	print(koala.color)
 
-#property with setter facility (CREATED USING THE @PROPERTY AND @PROPERTYNAME.SETTER DECORATORS)
+
+
+#PROPERTY WITH SETTER FACILITY (CREATED USING THE @PROPERTY AND @PROPERTYNAME.SETTER DECORATORS)
 class Cabinet():
     def __init__(self, color):
         self.color = color
-        self._material = 'wood' #THE INITIAL VALUE OF THE PROPERTY
-        #1. WHEN A SETTER IS AVAILABLE, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
-        #2. HERE, THE INITIAL VALUE IS ASSIGNED TO THE PROPERTY IN THE CONSTRUCTOR
+        self._material = 'wood' #THIS IS THE INITIAL VALUE OF THE PROPERTY
+
+        #1. WHEN A SETTER IS USED, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
+        #2. HERE FOR EXAMPLE, THE ASSIGNMENT TAKES PLACE IN THE CONSTRUCTOR
 
     @property
-    def material(self): #THIS IS THE PROPERTY GETTER
-        return self._material #WHEN A PROPERTY SETTER IS AVAILABLE THE PROPERTY GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
+    def material(self): #THIS IS THE GETTER
+        return self._material #WHEN A SETTER IS USED THE GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
 
     #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
     @material.setter
-    def material(self, value): #THIS IS THE PROPERTY SETTER
+    def material(self, value): #THIS IS THE SETTER
         password = input('enter password (password is kombo): ')
         if password=='kombo':
             self._material = value #HERE THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY
@@ -2234,12 +2292,11 @@ print(mycab.material)
 class Football():
 
 	class_name=''
-	description='' 	#THE INITIAL VALUE OF THE PROPERTY
+	description='' #THIS IS THE INITIAL VALUE OF THE PROPERTY
 	objects={}
 
-    #1. WHEN A SETTER IS AVAILABLE, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
-    #2. HERE, THE PROPERTY IS DEFINED AS A CLASS ATTRIBUTE
-    #3. THE INITIAL VALUE IS ASSIGNED TO THE PROPERTY WHEN IT IS DEFINED
+    #1. WHEN A SETTER IS USED, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
+    #2. HERE FOR EXAMPLE, THE ASSIGNMENT TAKES PLACE WHEN THE PROPERTY IS DEFINED AS A CLASS ATTRIBUTE
 
 
 	def __init__(self, name):
@@ -2265,7 +2322,7 @@ class Ball(Football):
 		super().__init__(name)
 
 	@property
-	def description(self): #THIS IS THE PROPERTY GETTER
+	def description(self): #THIS IS THE GETTER
 		if self.status==0:
 			self._description='hollow spherical inflated with air'
 		elif self.status==1:
@@ -2276,11 +2333,11 @@ class Ball(Football):
 			self._description = 'now you beat the goalkeeper!'
 		elif self.status>3:
 			self._description = 'IT\'S IN THE BACK OF THE NET!!!!!! GOALLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!'
-		return self._description #WHEN A PROPERTY SETTER IS AVAILABLE THE PROPERTY GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
+		return self._description #WHEN A SETTER IS USED THE GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
 
     #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
 	@description.setter 
-	def description(self, value): #THIS IS THE PROPERTY SETTER
+	def description(self, value): #THIS IS THE SETTER
 		self.status = value #HERE, THE SETTER ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
 		
 
