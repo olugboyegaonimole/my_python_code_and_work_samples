@@ -1,4 +1,10 @@
 
+import requests
+
+url =''
+data =''''''
+response = requests.post(url, data=data)
+
 # RESTful APIs
 
 
