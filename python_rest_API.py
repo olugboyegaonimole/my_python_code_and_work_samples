@@ -18,16 +18,6 @@
 # WHAT IS AN API?
 
 
-# rules and code for building software
-
-
-
-
-
-
-# WHAT IS AN API?
-
-
 # tools for building software
 
 # method of communication between components
@@ -39,7 +29,7 @@
 
 
 
-# WHAT ARE THE CONTENTS OF AN API?
+# WHAT ARE THE 5 CONTENTS OF AN API?
 
 
 # specifications for routines
@@ -48,7 +38,9 @@
 
 # object classes 
 
-# variables or remote calls
+# variables 
+
+# remote calls
 
 
 
@@ -103,7 +95,7 @@
 # WHAT IS A WEB SERVICE?
 
 
-# A method of communication between two electronic devices over a network
+# A method of communication between two devices over a network
 
 
 
