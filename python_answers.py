@@ -2176,33 +2176,53 @@ Food.toplist(pizza, 'salami')
 
 
 
-#PROPERTIES (CREATED USING THE @PROPERTY DECORATOR)
+#PROPERTIES
 
-#A PROPERTY SIMPLY MEANS AN INSTANCE ATTRIBUTE THAT IS DEFINED AS A METHOD, CALLED LIKE AN ATTRIBUTE, AND PROTECTED USING THE @PROPERTY DECORATOR
+
+#A PROPERTY IS SIMPLY AN ATTRIBUTE THAT IS DEFINED LIKE A METHOD
+
+
+#THE METHOD IS CALLED THE GETTER BECAUSE IT GETS YOU THE VALUE OF THE PROPERTY
+
+
+#THE GETTER DEFINITION IS PROTECTED USING THE @PROPERTY DECORATOR
+
+
 
 #properties allow you to do two things:
 
 #1. call a method the way you would call an instance attribute
-#2. customize access to the method
+#2. customize/restrict access to the method
 
 
+#PROPERTY WITHOUT SETTER FACILITY
 class Animal():
 
 	def __init__(self, color, age):
 		self.color = color #instance attribute
 		self.age = age #instance attribute
 
-	@property #quite simply speaking, a property is simply an instance attribute that is protected (read only, you can't modify it except you have a setter to do so)
-	def name(self):
-		return 'olu'
+
+	@property #quite simply speaking, a property is an instance attribute that is protected (read only, you can't modify it except you have a setter to do so)
+	def name(self): 	#THIS IS THE GETTER. THE GETTER GETS CALLED WHEN YOU CALL THE ATTRIBUTE
+
+						#THIS GETTER IS SIMPLY ANOTHER INSTANCE ATTRIBUTE 'name' BUT IT IS DEFINED LIKE A METHOD
+		
+
+		return 'olu'  	#HERE IS WHERE THE GETTER GETS YOU THE VALUE OF THE ATTRIBUTE
+
 
 dog  = Animal('red', 67)
 
-print(dog.name) #always remember to call your property like you would an attribute
+print(dog.name) 	#always remember to call your property like you would an attribute
+					#THE GETTER GETS CALLED WHEN YOU CALL THE ATTRIBUTE
 
 dog.age = 788
 
 print(dog.age)
+
+
+
 
 
 #PROPERTY WITHOUT SETTER FACILITY
@@ -2212,22 +2232,26 @@ class Monkey():
 		self.sound = sound
 	
 	@property
-	def color(self): #THIS IS THE GETTER
+	def color(self): #THIS IS THE GETTER. THE GETTER GETS CALLED WHEN YOU CALL THE ATTRIBUTE
 		return 'blue' 
+
 		#WHEN A SETTER IS NOT USED 
 		#1. YOU DON'T ASSIGN AN INITIAL VALUE TO THE PROPERTY
-		#2. INSTEAD THE GETTER MUST RETURN A LITERAL VALUE
+		#2. INSTEAD THE GETTER  RETURNS A LITERAL VALUE
 
 
 koala = Monkey('yelp')
 
 print(koala.sound)
-koala.sound = 'chuckle'
+koala.sound = 'chuckle' #YOU CAN ASSIGN A NEW VALUE TO AN ORDINARY ATTRIBUTE
 print(koala.sound)
 
-print(koala.color)
+
+print(koala.color) #THE GETTER GETS CALLED WHEN YOU CALL THE ATTRIBUTE
+
+
 try:
-	koala.color = 'chuckle'
+	koala.color = 'red' #EXCEPT YOU USE A SETTER, YOU CAN'T ASSIGN A NEW VALUE TO A PROPERTY
 except:
 	print('no')
 finally:
@@ -2235,33 +2259,53 @@ finally:
 
 
 
-#PROPERTY WITH SETTER FACILITY (CREATED USING THE @PROPERTY AND @PROPERTYNAME.SETTER DECORATORS)
+
+
+#PROPERTY WITH SETTER FACILITY 
+
 class Cabinet():
     def __init__(self, color):
         self.color = color
         self._material = 'wood' #THIS IS THE INITIAL VALUE OF THE PROPERTY
 
-        #1. WHEN A SETTER IS USED, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
-        #2. THE PROPERTY MUST ALWAYS BE WRITTEN AS A WEAKLY PRIVATE ATTRIBUTE EVERY TIME IT IS WRITTEN IN THE CONSRUCTOR, THE GETTER OR THE SETTER
-        #3. HERE FOR EXAMPLE, THE ASSIGNMENT OF THE PROPERTY'S INITIAL VALUE TAKES PLACE IN THE CONSTRUCTOR
+        #1. WHEN A SETTER IS USED, YOU ASSIGN AN INITIAL VALUE TO THE PROPERTY
+        #2. HERE FOR EXAMPLE, THE ASSIGNMENT OF THE PROPERTY'S INITIAL VALUE TAKES PLACE IN THE CONSTRUCTOR
+        #3. THE PROPERTY IS WRITTEN AS A WEAKLY PRIVATE ATTRIBUTE EVERY TIME IT IS WRITTEN IN THE CONSRUCTOR, THE GETTER OR THE SETTER
+
+    
+
 
     @property
-    def material(self): #THIS IS THE GETTER
+    def material(self): #THIS IS THE GETTER. THE GETTER GETS CALLED WHEN YOU CALL THE ATTRIBUTE
+        
         return self._material #WHEN A SETTER IS USED THE GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
 
-    #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO SOMETHING THAT DETERMINES THE VALUE OF THE PROPERTY
+    
+
+
+    #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO A VARIABLE THAT DETERMINES THE VALUE OF THE PROPERTY
+    
     @material.setter
-    def material(self, value): #THIS IS THE SETTER
+    def material(self, value): #THIS IS THE SETTER. THE SETTER GETS CALLED WHEN YOU TRY TO ASSIGN A VALUE TO A VARIABLE WITHIN THE SETTER METHOD
+        
         password = input('enter password (password is kombo): ')
+        
         if password=='kombo':
             self._material = value #HERE THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY
+        
         else:
             raise ValueError('tiff!')
+
+
 
 mycab = Cabinet('green')
 print(mycab.material)
 mycab.material = 'stone'
 print(mycab.material)
+
+
+
+
 
 
 
@@ -2274,58 +2318,95 @@ class Football():
 	objects={}
 
 
+
 	def __init__(self, name):
 		self.name = name
 		Football.objects[self.class_name] = self
 
+
 	def get_description(self):
 		print(self.class_name + '\n' + self.description)
 
+
+
+
 class Striker(Football):
+
 	class_name = 'striker'
 	description='scores goals'
 
+
+
+
 class Defender(Football):
+
 	class_name='defender'
 	description='stops striker'
 
+
+
+
 class Ball(Football):
+
 	def __init__(self, name):
 		self.class_name='ball'
 		self._description='hollow spherical inflated with air' #THIS IS THE INITIAL VALUE OF THE PROPERTY
 		self.status=0
-		super().__init__(name)
+		super().__init__(name) 	#THIS LINE GOES TO THE CONSTRUCTOR OF THE SUPER CLASS AND DOES TWO THINGS
+								#1.	ball1.name = addidas
+								#2. Football.objects[ball1.class_name] = ball1
+
 		
 		#1. WHEN A SETTER IS USED, YOU MUST ASSIGN AN INITIAL VALUE TO THE PROPERTY
-        #2. THE PROPERTY MUST ALWAYS BE WRITTEN AS A WEAKLY PRIVATE ATTRIBUTE EVERY TIME IT IS WRITTEN IN THE CONSRUCTOR, THE GETTER OR THE SETTER
-        #3. HERE FOR EXAMPLE, THE ASSIGNMENT OF THE PROPERTY'S INITIAL VALUE TAKES PLACE IN THE CONSTRUCTOR
+       	#2. HERE FOR EXAMPLE, THE ASSIGNMENT OF THE PROPERTY'S INITIAL VALUE TAKES PLACE IN THE CONSTRUCTOR
+        #3. THE PROPERTY IS WRITTEN AS A WEAKLY PRIVATE ATTRIBUTE EVERY TIME IT IS WRITTEN IN THE CONSRUCTOR, THE GETTER OR THE SETTER
+
+
 
 	@property
-	def description(self): #THIS IS THE GETTER
+	def description(self): #THIS IS THE GETTER. THE GETTER GETS CALLED WHEN YOU CALL THE PROPERTY
+
 		if self.status==0:
 			self._description='hollow spherical inflated with air'
+	
 		elif self.status==1:
 			self._description = 'you beat one defender!'
+	
 		elif self.status==2:
 			self._description = 'you beat another defender!'
+	
 		elif self.status==3:
 			self._description = 'now you beat the goalkeeper!'
+	
 		elif self.status>3:
 			self._description = 'IT\'S IN THE BACK OF THE NET!!!!!! GOALLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!'
+	
 		return self._description #WHEN A SETTER IS USED THE GETTER MUST RETURN THE PROPERTY ITSELF (AND NOT RETURN A LITERAL VALUE)
 
-    #THE SETTER DIRECTLY ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
+    
+
+
+    #THE SETTER ASSIGNS A VALUE TO THE PROPERTY, OR IT ASSIGNS A VALUE TO A VARIABLE THAT DETERMINES THE VALUE OF THE PROPERTY
+	
 	@description.setter 
-	def description(self, value): #THIS IS THE SETTER
-		self.status = value #HERE, THE SETTER ASSIGNS A VALUE TO SOMETHING THAT WILL DETERMINE THE VALUE OF THE PROPERTY
-		
+	def description(self, value): #THIS IS THE SETTER. THE SETTER GETS CALLED WHEN YOU TRY TO ASSIGN A VALUE TO A VARIABLE WITHIN THE SETTER METHOD
+
+		self.status = value 
+
+		#HERE THE SETTER ASSIGNS A VALUE TO A VARIABLE THAT DETERMINES THE VALUE OF THE PROPERTY
+	
+
 
 
 striker1 = Striker('yekini')
 defender1=Defender('uche')
-ball01=Ball('addidas')
+ball1=Ball('addidas')
+
+
 
 i=0
+
+
 def get_input():
 
 	global i
@@ -2335,6 +2416,7 @@ def get_input():
 	command = (input('enter command: ')).split(' ')
 
 	verbword = command[0]
+
 	if verbword in verbdict:
 		verb = verbdict[verbword]
 	else:
@@ -2347,39 +2429,161 @@ def get_input():
 	else:
 		verb('nothing')
 
+
+
 def say(noun):
+	
 	print('you said {}'.format(noun))
 
+
+
 def examine(noun):
+	
 	if noun in Football.objects:
 		Football.objects[noun].get_description()
+	
 	else:
 		print('there is no {} here'.format(noun))
 
+
+
 def kick(noun):
+
 	if noun in Football.objects:
+		
+		#go to the dictionary in the Football class
+		#get the object that corresponds to the noun you kicked
+		#assign the object to the word 'item'
 		item = Football.objects[noun]
+
+
 		if type(item) == Ball:
-			item.status += 1
+
+			item.status = item.status + 1 #THIS IS WHERE THE SETTER IS CALLED, BECAUSE YOU TRY TO ASSIGN A NEW VALUE TO ITEM.STATUS
+			
 			if item.status == 1:
 				print('you kicked the ball!')
+			
 			if 2<= item.status <=3:
 				print('you kicked the ball again!')
+			
 			elif item.status>3:
 				print('YOU\'VE SCORED!!!!!!!!!!!')
 
 		else:
 			print('you can\'t kick that')
+
 	else:
 		print('you can\'t kick that')
 
+
 verbdict={'say':say, 'examine':examine, 'kick':kick}
+
 
 while True:
 #while i<10:
+
 	get_input()
 
 
+
+
+#SIMPLE GAME 2
+class Vehicle():
+
+	vehicles={}
+
+
+
+	#constructor
+	def __init__(self, kind, speed, material, substance): #MATERIAL WILL NOT BE ASSIGNED WHEN AN OBJECT IS CREATED
+		self.kind = kind
+		self.speed = speed
+		self.material = material #BECAUSE A GETTER AND A SETTER ALREADY HAVE THIS NAME, THIS ASSIGNMENT WILL BE IGNORED
+		self.substance = substance
+		self.status=0
+		self._integrity = 'intact' #INITIAL VALUE OF THE PROPERTY
+		Vehicle.vehicles[self.kind] = self
+
+
+
+
+	#getter
+	@property
+	def material(self): #THE GETTER AND SETTER NEED NOT HAVE THE SAME NAME AS THE PROPERTY
+		if self.status==0:
+			self._integrity='intact'
+		
+		elif self.status==1:
+			self._integrity='integrity 75%'
+
+		elif self.status==2:
+			self._integrity='integrity 50%'
+
+		elif self.status==3:
+			self._integrity='integrity 25%'
+
+		elif self.status==4:
+			self._integrity='compromised'
+
+		return self._integrity
+
+
+
+	#setter
+	@material.setter
+	def material(self, value): #THE GETTER AND SETTER NEED NOT HAVE THE SAME NAME AS THE PROPERTY
+
+		self.status = value #THE SETTER IS CALLED AT ANY POINT IN THIS CODE WHERE YOU TRY TO ASSIGN A VALUE TO SELF.STATUS
+
+		return 'test' #setter won't return this
+		print('test') #setter won't print this
+
+
+car1 = Vehicle('sports', 600, 'steel', 'tin') #STEEL IS NOT ASSIGNED TO MATERIAL, NEVERTHELESS 4 ARGUMENTS ARE MANDATORY HERE
+
+
+print(car1.kind)
+print(car1.speed)
+print(car1.material) #RATHER THAN CALL THE MATERIAL ATTRIBUTE, THIS WILL CALL THE MAETRIAL PROPERTY
+print(car1.substance)
+
+
+
+def crash(item):
+
+	item.status += 1 #THIS ATTEMPTS TO ASSIGN A VALUE TO A VARIABLE IN THE SETTER, AND THEREFORE CALLS THE SETTER
+
+	print(car1.material)
+
+
+
+def getinput():
+
+	command = (input('enter command:')).split(' ')
+
+	if command[0] == 'crash':
+
+		commandment=verbdict[command[0]]
+
+		noun = command[1]
+
+		myarg = Vehicle.vehicles[noun]
+
+		#command[0](myarg) #WRONG. COMMAND[0] IS A STRING. A STRING ISN'T CALLABLE
+
+		commandment(myarg)
+
+
+
+
+verbdict={'crash':crash}
+
+
+while True:
+	getinput()
+
+	
 
 
 
