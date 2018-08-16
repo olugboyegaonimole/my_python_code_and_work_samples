@@ -71,9 +71,17 @@ def getinput():
 
 	command = (input('enter command:')).split(' ')
 
-	if command[0] == 'crash':
+	verbword = command[0]
 
-		commandment=verbdict[command[0]]
+	if verbword in verbdict:
+		verb = verbdict[verbword]
+
+	else:
+		print('you can\'t do that')
+		return
+
+
+	if len(command)>1:
 
 		noun = command[1]
 
@@ -81,7 +89,7 @@ def getinput():
 
 		#command[0](myarg) #WRONG. COMMAND[0] IS A STRING. A STRING ISN'T CALLABLE
 
-		commandment(myarg)
+		verb(myarg)
 
 
 
