@@ -19,6 +19,7 @@
 
 
 
+
 # WHAT IS AN API?
 
 
@@ -43,25 +44,34 @@
 # a source of software building blocks 
 # the building blocks are put together by a programmer
 
+
 # APPLICATION - A MACHINE
 # PROGRAMMING - GIVING INSTRUCTIONS
 # INTERFACE - A PROGRAM THAT A MACHINE USES FOR TAKING INPUT, AND GIVING OUTPUT
 
+
 # E.G. TWITTER HAS AN INTERFACE THAT HUMANS AND PROGRAMS CAN TALK TO
+
 
 # an API opens an interface on it's host that i can connect to
 
+
 # an API allows you create machines that talk to other machines
+
 
 # why would one machine want to talk to the next?
 
 	# so that it can use the services of the next
 
+
 # the API of one machine says to another machine "this is how you talk to us"
+
 
 # speaking to the API requires using specific syntax, formats
 
+
 # e.g. you can write the following API request into your browser address field and click on send http://graph.facebook.com/derekdahmer?fields=first_name
+
 
 
 
@@ -128,6 +138,7 @@
 
 
 
+
 # EXAMPLES OF API CALLS
 
 # complete response to an API call/request e.g. by loading up http://graph.facebook.com/derekdahmer
@@ -139,7 +150,7 @@
 # SERVER maps.googleapis.com
 # RESOURCES /maps/api/geocode/json
 
-#the following courtesy of https://www.youtube.com/user/jelledTV/feed
+# the following courtesy of https://www.youtube.com/user/jelledTV/feed
 
 # Youtube's Facebook Page via the Facebook Graph API
 # http://graph.facebook.com/youtube
@@ -202,6 +213,7 @@
 
 
 
+
 # WHAT WORK ENVIRONMENT DO YOU NEED FOR WORKING WITH RESTful? APIs?
 
 
@@ -219,6 +231,7 @@
 
 
 
+
 # WHAT IS REST?
 
 
@@ -229,6 +242,7 @@
 	# ie specifies constraints for communicating over a network
 
 # REpresentational State Transfer
+
 
 
 
@@ -258,6 +272,7 @@
 # becoming more cumbersome to manage networks using CLI commands
 
 # easier to manage networks using code (a programmatic approach)
+
 
 
 
