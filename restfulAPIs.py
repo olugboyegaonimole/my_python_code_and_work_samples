@@ -1,28 +1,14 @@
-# API END POINT
 
-
-# GET DATA FROM APIs
-# WRITE DATA TO APIs
-
-
-
-
-# GET - GET DATA
-# POST - WRITE DATA
-
-# Best practice (WHEN WRITING DATA?) is to put the data in the body of the request
-
-
-
-
-# RESTful APIs FOR WEB APPLICATIONS
+# RESTful APIs FOR BUILDING WEB APPLICATIONS
 
 
 # WHAT IS AN API?
+# WHAT IS AN API END POINT?
 # MISCELLANEOUS API STUFF
 # WHICH OF THE FOLLOWING ARE TRUE?
 # EXAMPLES OF API  CALLS
 # WHAT IS THE FUNCTION OF A WEB API?
+# HOW CAN YOUR APP INTERACT WITH A WEB API?
 # WHAT WORK ENVIRONMENT DO YOU NEED FOR WORKING WITH RESTful? APIs?
 # WHAT IS REST?
 # WHAT IS A WEB SERVICE?
@@ -36,48 +22,32 @@
 # WHAT IS AN API?
 
 
-
-
 # A PROGRAM THAT ALLOWS ONE PIECE OF SOFTWARE TO TALK TO ANOTHER
 
 
 # AN API IS A PROGRAM ON A SERVER THAT ALLOWS ME TO 
 	
-	#CONNECT MY WEB APP TO THE SERVER AND 
-	#REPLICATE THE SERVER'S SERVICES ON MY WEB APP
-	#THEN MY USERS CAN USE THE ITS SERVICES FROM MY APP
-
-
-
-# AN API ALLOWS ME TO 
-
-	# integrate MY program with A WEBSITE and 
+	# CONNECT MY WEB APP TO A SERVER
 	
-	# allow MY PROGRAM to perform the operations available on the website
-
-
+	# REPLICATE ITS SERVICES ON MY APP
+	
+	# USE ITS SERVICES FROM MY APP
 
 
 # a set of definitions, protocols and tools for building software
 
 
-
 # a set of methods of communication between software components
-
 
 
 # a source of software building blocks 
 # the building blocks are put together by a programmer
 
-
-
 # APPLICATION - A MACHINE
 # PROGRAMMING - GIVING INSTRUCTIONS
 # INTERFACE - A PROGRAM THAT A MACHINE USES FOR TAKING INPUT, AND GIVING OUTPUT
 
-
 # E.G. TWITTER HAS AN INTERFACE THAT HUMANS AND PROGRAMS CAN TALK TO
-
 
 # an API opens an interface on it's host that i can connect to
 
@@ -92,7 +62,6 @@
 # speaking to the API requires using specific syntax, formats
 
 # e.g. you can write the following API request into your browser address field and click on send http://graph.facebook.com/derekdahmer?fields=first_name
-
 
 
 
@@ -121,8 +90,6 @@
 	# easy for humans to read and write. 
 	# easy for machines to parse and generate.
 	
-
-
 # an API allows me to connect my app to the server of a web-based service
 	
 	# i code the services into my app
@@ -133,9 +100,7 @@
 	# i can use their infrastructure and bring more services to my users
 	# i can boost my app's functionality
 
-
 # an API opens an interface on it's host that i can connect to
-
 
 # i can equally have an API on my app's back-end server
 
@@ -156,6 +121,8 @@
 # the API receives the call?
 # the call passes through the API?
 # the call uses API rules or API language?
+
+
 
 
 
@@ -188,6 +155,34 @@
 
 
 
+# A WEB API ALLOWS ME TO 
+
+	# INTEGRATE MY program with A WEBSITE  
+	
+	# PERFORM on my app operations available on the website
+
+
+
+
+
+
+
+
+# HOW CAN YOUR APP INTERACT WITH A WEB API?
+
+
+# GET DATA FROM AN API
+# WRITE DATA TO AN API
+
+
+# GET - GET DATA
+# POST - WRITE DATA
+
+# Best practice (WHEN WRITING DATA?) is to put the data in the body of the request
+
+
+
+
 
 
 
@@ -206,12 +201,14 @@
 
 
 
+
+
 # WHAT IS REST?
 
 
 # An architectural style 
 
-# specifies constraints for creating web services
+# specifies CONSTRAINTS for creating web services
 
 	# ie specifies constraints for communicating over a network
 
@@ -235,9 +232,10 @@
 
 
 
+
 # WHY GET DATA FROM A DEVICE'S REST API (USING PYTHON)?
 
-# today there is an explosion of IP connected devices 
+# today there is an explosion in the number of IP connected devices 
 
 # networks are scaling ever larger
 
