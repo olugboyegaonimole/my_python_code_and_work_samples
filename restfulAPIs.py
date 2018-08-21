@@ -139,6 +139,22 @@
 # SERVER maps.googleapis.com
 # RESOURCES /maps/api/geocode/json
 
+#the following courtesy of https://www.youtube.com/user/jelledTV/feed
+
+# Youtube's Facebook Page via the Facebook Graph API
+# http://graph.facebook.com/youtube
+
+# Same thing, this time with filters
+# https://graph.facebook.com/youtube?fields=id,likes
+
+# Google Maps Geocode API call for the city of Chicago
+# http://maps.googleapis.com/maps/api/geocode/json?address=lagos
+
+# Apigee Instagram API console
+# https://apigee.com/console/instagram
+
+
+
 
 
 
