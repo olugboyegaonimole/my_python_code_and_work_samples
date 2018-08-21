@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])  #the / defines any sub-folders if any
 def test():   #what method is this. ANS: a method which is called when you call your app.run() method
-	return jsonify({'message' : 'it works sha!'}) #here, the word 'o' is an intensifier, lol
+	return jsonify({'message' : 'it works'})
 
 
 
