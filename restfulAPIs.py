@@ -139,11 +139,13 @@
 
 
 
-# EXAMPLES OF API CALLS
+# EXAMPLES OF REQUESTS TO APIs
 
-# complete response to an API call/request e.g. by loading up http://graph.facebook.com/derekdahmer
+# view complete response to an API request e.g. by loading up http://graph.facebook.com/derekdahmer
 
-# only selected parameters e.g. by loading up  http://graph.facebook.com/derekdahmer?fields=id,name,likes
+# view response from only selected parameters e.g. by loading up  http://graph.facebook.com/derekdahmer?fields=id,name,likes
+
+# the parameters filter the data returned by the response
 
 # http://maps.googleapis.com/maps/api/geocode/json?address=lagos&sensor=false
 
