@@ -1,6 +1,18 @@
 # API END POINT
 
 
+# GET DATA FROM APIs
+# WRITE DATA TO APIs
+
+
+
+
+# GET - GET DATA
+# POST - WRITE DATA
+
+# Best practice (WHEN WRITING DATA?) is to put the data in the body of the request
+
+
 
 
 # RESTful APIs FOR WEB APPLICATIONS
@@ -39,8 +51,9 @@
 
 # AN API ALLOWS ME TO 
 
-	#integrate MY program with A WEBSITE and 
-	#allow MY PROGRAM to perform many of the operations available on the website
+	# integrate MY program with A WEBSITE and 
+	
+	# allow MY PROGRAM to perform the operations available on the website
 
 
 
