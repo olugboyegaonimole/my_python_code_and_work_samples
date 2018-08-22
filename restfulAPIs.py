@@ -333,11 +333,24 @@
 	# Access Token
 	# Token Secret
 
-# 4 open Postman and create a new request
+# 4 Obtain your request url. To do this
 
-# 5 select POST as your request method
+	# go back to the home page of your twitter developer account
+	
+	# hover above your username in the top right hand corner and from the menu that drops down, select Get Started
+	
+	# go to the 'Start using the endpoints!' section and click on API reference list
+	
+	# from the list click on the API you require and copy the url from the page that is displayed
+	
+	# to obtain a url for posting a twitter status update, we will click on 'POST statuses/update'
 
-# 6 use https://api.twitter.com/1.1/statuses/update.json as your request url (i.e. you want a json formatted response)
+	# copy the request url https://api.twitter.com/1.1/statuses/update.json (i.e. you want a json formatted response)
+
+
+# 5 open Postman and create a new request
+
+# 6 select POST as your request method and paste the request url in the field
 
 # 7 go to the 'Authorization' tab
 
@@ -353,7 +366,15 @@
 
 	# select the 'x-www-form-urlencoded' option
 	
-	# enter 'status' in the Key field and your desired message in the Value field
+	# write 'status' in the 'Key' field and your desired message in the 'Value' field
 
 # 9 hit the send button
+
+# 10 to post a new status update, 
+	
+	# go to the 'Body' tab - step 8 above -  and write your message in the 'Value' field
+	
+	# then go to the 'Authorization' tab and click on 'Update Request' in the upper right corner
+	
+	# hit the send button
 
