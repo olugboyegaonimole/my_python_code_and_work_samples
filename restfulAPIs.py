@@ -208,26 +208,10 @@
 # WRITE DATA TO AN API
 
 
-# GET - GET DATA
-# POST - WRITE DATA
+# HTTP GET METHOD - WILL GET DATA
+# HTTP POST METHOD - WILL WRITE DATA
 
 # Best practice (WHEN WRITING DATA?) is to put the data in the body of the request
-
-# E.G. USING THE POST METHOD, SEND A TWEET FROM A TWITTER ACCOUNT USING THE TWITTER API
-
-	# TO DO THIS YOU NEED AUTHENTICATION
-	
-	# FOR AUTHENTICATION MANY BIG WEBSITES USE OAUTH OR OAUTH2
-
-	# IN AUTHENTICATION YOU OBTAIN CREDENTIALS
-	
-		# CLIENT ID AND CLIENT SECRET
-	
-	# YOU EXCHANGE THE CREDENTIALS FOR AN ACCESS TOKEN
-	
-	# YOU PASS THE ACCESS TOKEN TO THE WEBSITE
-	
-	# THE WEBSITE KNOWS THE REQUEST IS COMING FROM YOU, AND SO HONOURS THE REQUEST
 
 
 
@@ -312,4 +296,48 @@
 # previously available as extension to google Chrome browser
 
 # postman interceptor now comes pre-installed with Chrome browser?
+
+
+# Best practice (WHEN WRITING DATA TO A REST API) is to put the data in the body of the request
+
+# E.G. USING THE POST METHOD, SEND A TWEET FROM A TWITTER ACCOUNT USING THE TWITTER API
+
+	# TO DO THIS YOU NEED AUTHENTICATION
+	
+	# FOR AUTHENTICATION MANY BIG WEBSITES USE OAUTH OR OAUTH2
+
+	# IN AUTHENTICATION YOU OBTAIN CREDENTIALS
+	
+		# CLIENT ID AND CLIENT SECRET
+	
+	# YOU EXCHANGE THE CREDENTIALS FOR AN ACCESS TOKEN
+	
+	# YOU PASS THE ACCESS TOKEN TO THE WEBSITE
+	
+	# THE WEBSITE KNOWS THE REQUEST IS COMING FROM YOU, AND SO HONOURS THE REQUEST
+	
+# STEPS
+
+# 1 create an account at https://developer.twitter.com
+
+# 2 create your first app
+
+# 3 go to the 'Keys and Access Tokens' tab and obtain the following:
+
+	# Consumer Key
+	# Consumer Secret
+	# Access Token
+	# Token Secret
+
+# 4 open Postman and create a new request
+
+# 5 select POST as your request method
+
+# 6 use https://api.twitter.com/1.1/statuses/update.json as your request url (i.e. you want a json formatted response)
+
+# 7 set 'Authorization' header to OAuth1.0 credentials
+
+# 8 
+
+
 
