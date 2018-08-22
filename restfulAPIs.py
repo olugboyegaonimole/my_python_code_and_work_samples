@@ -335,9 +335,21 @@
 
 # 6 use https://api.twitter.com/1.1/statuses/update.json as your request url (i.e. you want a json formatted response)
 
-# 7 set 'Authorization' header to OAuth1.0 credentials
+# 7 go to the 'Authorization' tab
 
-# 8 
+	# set Authorization Type to OAuth 1.0
+	
+	# Enter your 
+		# Consumer Key
+		# Consumer Secret
+		# Access Token
+		# Token Secret
 
+# 8 go to the 'Body' tab 
 
+	# select the 'x-www-form-urlencoded' option
+	
+	# enter 'status' in the Key field and your desired message in the Value field
+
+# 9 hit the send button
 
