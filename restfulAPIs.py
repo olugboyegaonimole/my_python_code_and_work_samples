@@ -186,9 +186,9 @@
 
 # A WEB API ALLOWS ME TO 
 
-	# INTEGRATE MY program with A WEBSITE  
+	# INTEGRATE A WEBSITE INTO MY APP
 	
-	# PERFORM on my app operations available on the website
+	# PERFORM operations available on the website
 
 
 
