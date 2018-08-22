@@ -1,5 +1,12 @@
 
-# RESTful APIs FOR BUILDING WEB APPLICATIONS
+# RESTful APIs
+
+# Culled primarily from 'REST API concepts and examples'
+
+# Posted onto YouTube by 'WebConcepts' https://www.youtube.com/user/jelledTV/feed
+
+
+
 
 
 # WHAT IS AN API?
@@ -14,6 +21,8 @@
 # WHAT IS A WEB SERVICE?
 # WHY GET DATA FROM A DEVICE'S REST API (USING PYTHON)?
 # WHAT IS POSTMAN?
+# WHAT ADVANTAGE DOES POSTMAN PROVIDE?
+
 
 
 
@@ -297,6 +306,12 @@
 
 # postman interceptor now comes pre-installed with Chrome browser?
 
+
+
+
+
+
+# WHAT ADVANTAGE DOES POSTMAN PROVIDE?
 
 # Best practice (WHEN WRITING DATA TO A REST API) is to put the data in the body of the request
 
