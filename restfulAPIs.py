@@ -300,7 +300,11 @@
 
 # Best practice (WHEN WRITING DATA TO A REST API) is to put the data in the body of the request
 
-# E.G. USING THE POST METHOD, SEND A TWEET FROM A TWITTER ACCOUNT USING THE TWITTER API
+	# A normal web browser doesn't let you put data in the body of the request
+
+	# you can put data in the body of the requeest using Postman
+
+# E.G. USING THE POST METHOD WITHIN POSTMAN, SEND A TWEET FROM A TWITTER ACCOUNT USING THE TWITTER API
 
 	# TO DO THIS YOU NEED AUTHENTICATION
 	
