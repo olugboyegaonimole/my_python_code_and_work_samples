@@ -205,7 +205,9 @@
 
 	# INTEGRATE A WEBSITE INTO MY APP?
 	
-	# PERFORM operations available on the website
+	# PERFORM THE operations available on the website
+	
+	# USE THE SERVICES AVAILABLE ON THE WEBSITE
 	
 
 
