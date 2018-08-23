@@ -493,12 +493,13 @@ for i in range(23):
 	print (i) # this breaks without using the value of i specified in the if conditional
 
 
-#for else
-for item in range(2, 13): # this takes all the integers between 2 and 10
-	if 13 % item == 0: # if this is true, then the item is a factor of 10
-		print (item, 'is a factor of', 13)
+#for else: the else statement executes if the loop completes normally, ie if the break isn't executed
+for number in range(2, 13): # this takes all the integers between 2 and 10
+	if 13 % number == 0: # we found a factor
+		print (number, 'is a factor of', 13)
 		break
 
+#the loop completed normally, we didn't find a factor, none of the numbers in range(2,13) is a factor of 13
 else:
 	print(13, 'is a prime number')
 
