@@ -1,9 +1,14 @@
+# API
 
-# RESTful APIs
 
-# Culled primarily from 'REST API concepts and examples'
 
-# Posted onto YouTube by 'WebConcepts' https://www.youtube.com/user/jelledTV/feed
+# RESOURCES:
+
+# 'REST API concepts and examples' (Author: 'WebConcepts' https://www.youtube.com/user/jelledTV/feed)
+
+# 'Python and REST APIs 2 - GET Data' (Author: 'Airheads Broadcasting Channel' https://www.youtube.com/channel/UCFJCnuXFGfEbwEzfcgU_ERQ/featured)
+
+# 'Tools for Entrepreneurs: Introduction to APIs' (Author: 'Tools for Entrepreneurs: Introduction to APIs' https://www.youtube.com/channel/UCkWLGZL69LhjjgGRKhcAE_w)
 
 
 
@@ -32,14 +37,17 @@
 # WHAT IS AN API?
 
 
+# part of an application that allows you to connect to that application and use it remotely
+
+
 # A PROGRAM THAT ALLOWS ONE PIECE OF SOFTWARE TO TALK TO ANOTHER
 
 
 # AN API IS A PROGRAM ON A SERVER THAT ALLOWS ME TO 
 	
-	# CONNECT MY WEB APP TO A SERVER
+	# CONNECT MY WEB APP TO THE SERVER
 	
-	# REPLICATE ITS SERVICES ON MY APP
+	# REPLICATE ITS SERVICES ON MY APP?
 	
 	# USE ITS SERVICES FROM MY APP
 
@@ -195,7 +203,7 @@
 
 # A WEB API ALLOWS ME TO 
 
-	# INTEGRATE A WEBSITE INTO MY APP
+	# INTEGRATE A WEBSITE INTO MY APP?
 	
 	# PERFORM operations available on the website
 	
