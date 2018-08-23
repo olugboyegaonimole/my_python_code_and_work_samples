@@ -8,7 +8,11 @@
 
   # elegance and simplicity
   
-# basic 'hello world' flask application:
+  # comes with several extensions
+  
+  
+  
+# basic 'hello world' flask application using the vanilla flask module:
 
 
 from flask import Flask
@@ -31,3 +35,6 @@ def hello():
 #run in debug mode
 if __name__=='__main__':
   app.run(debug=True)
+
+  
+  #the above is a web app but not a REST API yet
