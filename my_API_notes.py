@@ -1,4 +1,4 @@
-# API
+# my API notes
 
 
 
@@ -25,8 +25,7 @@
 # WHAT IS REST?
 # WHAT IS A WEB SERVICE?
 # WHY GET DATA FROM A DEVICE'S REST API (USING PYTHON)?
-# WHAT IS POSTMAN?
-# WHAT ADVANTAGE DOES POSTMAN PROVIDE?
+
 
 
 
@@ -299,107 +298,4 @@
 # easier to manage networks using code (a programmatic approach)
 
 
-
-
-
-
-
-
-# WHAT IS POSTMAN?
-
-
-# A REST client
-
-# makes it easier to interact with and interrogate a device's REST API
-
-# previously available as extension to google Chrome browser
-
-# postman interceptor now comes pre-installed with Chrome browser?
-
-
-
-
-
-
-# WHAT ADVANTAGE DOES POSTMAN PROVIDE?
-
-# Best practice (WHEN WRITING DATA TO A REST API) is to put the data in the body of the request
-
-	# A normal web browser doesn't let you put data in the body of the request
-
-	# you can put data in the body of the requeest using Postman
-
-# E.G. USING THE POST METHOD WITHIN POSTMAN, SEND A TWEET FROM A TWITTER ACCOUNT USING THE TWITTER API
-
-	# TO DO THIS YOU NEED AUTHENTICATION
-	
-	# FOR AUTHENTICATION MANY BIG WEBSITES USE OAUTH OR OAUTH2
-
-	# IN AUTHENTICATION YOU OBTAIN CREDENTIALS
-	
-		# CLIENT ID AND CLIENT SECRET
-	
-	# YOU EXCHANGE THE CREDENTIALS FOR AN ACCESS TOKEN
-	
-	# YOU PASS THE ACCESS TOKEN TO THE WEBSITE
-	
-	# THE WEBSITE KNOWS THE REQUEST IS COMING FROM YOU, AND SO HONOURS THE REQUEST
-	
-# STEPS
-
-# 1 create an account at https://developer.twitter.com
-
-# 2 create your first app
-
-# 3 go to the 'Keys and Access Tokens' tab and obtain the following:
-
-	# Consumer Key
-	# Consumer Secret
-	# Access Token
-	# Token Secret
-
-# 4 Obtain your request url. To do this
-
-	# go back to the home page of your twitter developer account
-	
-	# hover above your username in the top right hand corner and from the menu that drops down, select Get Started
-	
-	# go to the 'Start using the endpoints!' section and click on API reference list
-	
-	# from the list click on the API you require and copy the url from the page that is displayed
-	
-	# to obtain a url for posting a twitter status update, we will click on 'POST statuses/update'
-
-	# copy the request url https://api.twitter.com/1.1/statuses/update.json (i.e. you want a json formatted response)
-
-
-# 5 open Postman and create a new request
-
-# 6 select POST as your request method and paste the request url in the field
-
-# 7 go to the 'Authorization' tab
-
-	# set Authorization Type to OAuth 1.0
-	
-	# Enter your 
-		# Consumer Key
-		# Consumer Secret
-		# Access Token
-		# Token Secret
-
-# 8 go to the 'Body' tab 
-
-	# select the 'x-www-form-urlencoded' option
-	
-	# write 'status' in the 'Key' field and your desired message in the 'Value' field
-
-# 9 hit the send button
-
-# 10 to post a new status update, 
-	
-	# go to the 'Body' tab - step 8 above -  and write your message in the 'Value' field
-	
-	# then go to the 'Authorization' tab and click on 'Update Request' in the upper right corner
-	
-	# hit the send button
 
