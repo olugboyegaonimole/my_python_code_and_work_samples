@@ -27,7 +27,7 @@ class HelloWorld(Resource):
 
 	def get(self):
 		#return a message in json format
-		return {'message':'hi bob'}
+		return {'message':'hi'}
 
 	def post(self):
 		#extract the content of the request and assign it to an object
@@ -43,7 +43,7 @@ class Multiply(Resource):
 
 	def get(self, number):
 		#return (number*78) # WRONG. FORMAT SHOULD BE JSON
-		return {'result':number*7678}
+		return {'result':number*78}
 
 
 
