@@ -8,7 +8,9 @@
 
 # 'Python and REST APIs 2 - GET Data' (Author: 'Airheads Broadcasting Channel' https://www.youtube.com/channel/UCFJCnuXFGfEbwEzfcgU_ERQ/featured)
 
-# 'Tools for Entrepreneurs: Introduction to APIs' (Author: 'Tools for Entrepreneurs: Introduction to APIs' https://www.youtube.com/channel/UCkWLGZL69LhjjgGRKhcAE_w)
+# 'Tools for Entrepreneurs: Introduction to APIs' (Author: 'Google for Entrepreneurs' https://www.youtube.com/channel/UCkWLGZL69LhjjgGRKhcAE_w)
+
+# 'Building a REST API in Python | Home Automation #02' (Author: 'Jake Wright' https://www.youtube.com/user/jaketvee/featured)
 
 
 
@@ -20,7 +22,7 @@
 # WHICH OF THE FOLLOWING ARE TRUE?
 # EXAMPLES OF API CALLS
 # WHAT IS THE FUNCTION OF A WEB API?
-# HOW CAN YOUR APP INTERACT WITH A WEB API?
+# HOW CAN YOUR APP INTERACT WITH A WEB API? GET AND POST
 # WHAT WORK ENVIRONMENT DO YOU NEED FOR WORKING WITH RESTful? APIs?
 # WHAT IS REST?
 # WHAT IS A WEB SERVICE?
@@ -208,6 +210,12 @@
 	
 	# USE THE SERVICES AVAILABLE ON THE WEBSITE
 	
+	# work with tools
+	
+	# perform functions
+	
+	# carry out actions
+	
 
 
 # A WEB API ALLOWS YOU TO OBTAIN ALL KINDS OF DATA FROM A WEBSITE
@@ -230,6 +238,10 @@
 # HTTP POST METHOD - WILL WRITE DATA
 
 # Best practice (WHEN WRITING DATA?) is to put the data in the body of the request
+
+# get requests are idempotent 
+
+	# they don't modify the contents of the database
 
 
 
@@ -266,6 +278,14 @@
 	# ie specifies constraints for communicating over a network
 
 # REpresentational State Transfer
+
+# it is STATELESS
+
+	# Can't store context between requests
+	
+		# can't remember who you are or what you've previously asked
+	
+	# Every request received must contain all of the information necessary to process that request
 
 
 
