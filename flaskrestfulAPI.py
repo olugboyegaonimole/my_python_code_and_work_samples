@@ -34,7 +34,7 @@ class HelloWorld(Resource):
 		message = request.get_json()
 
 		#return message in json format
-		return {'you sent the following message:':message}, 201
+		return {'you posted the following:':message}, 201
 
 
 
