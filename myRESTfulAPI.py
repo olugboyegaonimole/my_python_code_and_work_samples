@@ -112,8 +112,8 @@
 
 			    
 			    <firstteam-player id="12">
-		    	    <link rel="self" href="/firstteam-players/12"/>
-		    	    ...
+		    	    	<link rel="self" href="/firstteam-players/12"/>
+		    	    	...
 			    </firstteam-player>
 
 
@@ -150,13 +150,13 @@
 			 
 
 			    <match-played id="001">
-		    	    <link rel="self" href="/matches-played/001"/>
+		    	    	<link rel="self" href="/matches-played/001"/>
 			    	...
 			    </match-played>
 
 			    
 			    <match-played id="002">
-		    	    <link rel="self" href="/matches-played/002"/>
+		    	    	<link rel="self" href="/matches-played/002"/>
 			    	...
 			    </match-played>
 
@@ -172,12 +172,10 @@
 
 		#SINGLETON RESOURCE - MATCH PLAYED
 
-		    <match-played id="001">
-			    <link rel="self" href="/matches-played/001"/>
-			    ...
-			    <link rel="match-outcome" href="/matches-played/001/match-outcome"/>
-
-			
+		    	<match-played id="001">
+				<link rel="self" href="/matches-played/001"/>
+				...
+				<link rel="match-outcome" href="/matches-played/001/match-outcome"/>
 			</match-played>
 
 
@@ -188,15 +186,15 @@
 			 
 
 			    <match-played id="001">
-		    	    <link rel="self" href="/firstteam-players/11/matches-played/001"/>
-		       	    <link rel="detail" href="/matches-played/001"/>
+		    	    	<link rel="self" href="/firstteam-players/11/matches-played/001"/>
+		       	    	<link rel="detail" href="/matches-played/001"/>
 			    	...
 			    </match-played>
 
 			    
 			    <match-played id="002">
 			    	<link rel="self" href="/firstteam-players/11/matches-played/002"/>
-		       	    <link rel="detail" href="/matches-played/002"/>
+		       	   	<link rel="detail" href="/matches-played/002"/>
 			    	...
 			    </match-played>
 
@@ -212,13 +210,11 @@
 
 		#SINGLETON RESOURCE - MATCH PLAYED UNDER SINGLE PLAYER
 
-		    <match-played id="001">
-		    	<link rel="self" href="/firstteam-players/11/matches-played/001"/>
-			    <link rel="detail" href="/matches-played/001"/>
-			    ...
-			    <link rel="match-outcome" href="/matches-played/001/match-outcome"/>
-
-			
+			<match-played id="001">
+		    		<link rel="self" href="/firstteam-players/11/matches-played/001"/>
+				<link rel="detail" href="/matches-played/001"/>
+				...
+				<link rel="match-outcome" href="/matches-played/001/match-outcome"/>
 			</match-played>	
 
 
