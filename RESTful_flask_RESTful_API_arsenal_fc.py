@@ -114,7 +114,7 @@
 		#THE BELOW USES XML
 
 
-		#COLLECTION RESOURCE - PLAYER
+		#COLLECTION RESOURCE - FIRST TEAM
 
 			<firstteam-players size="26">
 			    <link rel="self" href="/firstteam-players"/>
@@ -160,7 +160,7 @@
 			</firstteam-player>
 
 
-		#COLLECTION RESOURCE - MATCHES PLAYED
+		#SUB COLLECTION RESOURCE - MATCHES PLAYED
 
 			<matches-played size="38">
 			    <link rel="self" href="/matches-played"/>
@@ -187,7 +187,7 @@
 			</matches-played>
 
 
-		#SINGLETON RESOURCE - MATCH PLAYED
+		#SINGLETON RESOURCE IN SUB COLLECTION RESOURCE - MATCH PLAYED
 
 		    <match-played id="001">
 			    <link rel="self" href="/matches-played/001"/>
@@ -198,7 +198,7 @@
 			</match-played>
 
 
-		#COLLECTION RESOURCE - MATCHES PLAYED UNDER SINGLE PLAYER
+		#SUB COLLECTION RESOURCE UNDER SINGLETON RESOURCE - MATCHES PLAYED UNDER SINGLE PLAYER
 
 			<matches-played size="38">
 			    <link rel="self" href="/firstteam-players/11/matches-played"/>
@@ -227,7 +227,7 @@
 			</matches-played>
 
 
-		#SINGLETON RESOURCE - MATCH PLAYED UNDER SINGLE PLAYER
+		#SINGLETON RESOURCE UNDER SINGLETON RESOURCE- MATCH PLAYED UNDER SINGLE PLAYER
 
 		    <match-played id="001">
 		    	<link rel="self" href="/firstteam-players/11/matches-played/001"/>
