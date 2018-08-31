@@ -2,9 +2,11 @@
 
 
 
-# INTRODUCTION: BUILD A BASIC FLASK WEB APPLICATION
+# TASK 1: BUILD A BASIC WEB APPLICATION WITH FLASK
 
-# MAIN TASK: BUILD A REST API USING PYTHON AND VANILLA FLASK
+# TASK 2: BUILD A REST API USING PYTHON AND FLASK (ROOT FOLDER ONLY, GET METHOD ONLY)
+
+# TASK 3: BUILD A REST API USING PYTHON AND FLASK (ROOT FOLDER AND ADDITIONAL SUB FOLDERS, GET AND POST METHODS)
 
 
 
@@ -24,23 +26,33 @@
 
 
 
-# INTRODUCTION: BUILD A BASIC FLASK WEB APPLICATION
+# TASK 1: BUILD A BASIC WEB APPLICATION WITH FLASK
 
 
 from flask import Flask
 
 
+
 #create Flask object
+
 app = Flask(__name__)
 
 
-#create URI ENDPOINT?
-@app.route('/')
+
+
+
+#create URI ENDPOINT #is this a URI endpoint?
+
+@app.route('/') # the decorator converts the function hello() to a URI endpoint
 def hello():
   return "hello TESTING"
 
 
+
+
+
 #run in debug mode
+
 if __name__=='__main__':
   app.run(debug=True, port=8080)
 
@@ -50,24 +62,34 @@ if __name__=='__main__':
 
 
 
-# MAIN TASK: BUILD A REST API USING PYTHON AND VANILLA FLASK
+# TASK 2: BUILD A REST API USING PYTHON AND FLASK (ROOT FOLDER ONLY, GET METHOD ONLY)
 
 #EXAMPLE 1
 
 from flask import Flask, jsonify
 
 
+
 #create Flask object
+
 app = Flask(__name__)
 
 
+
+
+
 #create URI ENDPOINT
-@app.route('/') # decorating the function hello() with this route converts the function to a URI endpoint
+
+@app.route('/') # the decorator converts the function hello() to a URI endpoint
 def hello():
-  return jsonify({'message':"hello TESTING"}) # the json format converts the web app to a REST API
+  return jsonify({'message':"hello TESTING"}) # the jsonified output converts the web app to a REST API
+
+
+
 
 
 #run in debug mode
+
 if __name__=='__main__':
   app.run(debug=True, port=8080)
 
@@ -75,7 +97,7 @@ if __name__=='__main__':
 
 
 
-#EXAMPLE 2
+# TASK 3: BUILD A REST API USING PYTHON AND FLASK VANILLA (ROOT FOLDER AND ADDITIONAL SUB FOLDERS, GET AND POST METHODS)
 
 from flask import Flask, jsonify, request
 
@@ -95,11 +117,16 @@ from flask import Flask, jsonify, request
 app =  Flask(__name__)
 
 
+
+
 @app.route('/multiply/<int:number>', methods=['GET', 'POST']) # this endpoint accepts values that you can process further
 def myfunction(number):
 	return jsonify({'result':number * 89})
 
 
+
+
+#this URI endpoint will work both with GET requests and with POST requests as well
 @app.route('/', methods=['GET', 'POST'])
 def myfunction2():
 
