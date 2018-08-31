@@ -14,10 +14,13 @@
 
 		#identify which objects will be resources
 		#identify which objects will be subresources
-		#assign a unique identifier to each resource and sub resource
+		#assign a unique identifier to each resource and sub resource???
 
 
 	#Create Model URIs
+
+		#assign a unique identifier to each resource and sub resource???
+
 
 
 	#Determine Representations
@@ -47,17 +50,27 @@
 
 #IMPLEMENTATION OF STEPS
 
-	#IDENTIFY OBJECT MODEL
+	#IDENTIFY YOUR OBJECT MODEL
 
-		# resource1 = arsenal first team, id = 1
-		# resource2 = arsenal academy, id = 2
-		# resource3 = arsenal coaching staff, id = 3
+		# collection resources
+
+			# arsenal first team, id = 1
+			# arsenal academy, id = 2
+			# arsenal coaching staff, id = 3
 
 
-		# resource11 = petr cech, id 11
-		# resource12 = danny welbeck, id 12
-		# resource31 = unai emery, id 31
-		# resource32 = juan carlos carcedo, id 32
+		# singleton resources
+
+			# petr cech, id 11
+			# danny welbeck, id 12
+			# unai emery, id 31
+			# juan carlos carcedo, id 32
+
+
+		# sub collection resources
+
+			# matches played
+			# days at work
 
 
 
@@ -76,8 +89,8 @@
 
 		# question: a singleton resource can have a sub collection resource, but can a collection resource have a sub collection resource?
 
-		# http://api.arsenal.com/player-management/firstteam-players/{player-id}/matches-played/{match-id} - singleton resource
-		# http://api.arsenal.com/staff-management/coaching-staff/{staff-id}/days-at-work/{date-id} - singleton resource
+		# http://api.arsenal.com/player-management/firstteam-players/{player-id}/matches-played/{match-id} - singleton resource in sub collection resource
+		# http://api.arsenal.com/staff-management/coaching-staff/{staff-id}/days-at-work/{date-id} - singleton resource in sub collection resource
 
 
 
@@ -138,6 +151,8 @@
 				    <match-played id="789">
 		   	   		    <link rel="self" href="/matches-played/789"/>
 				    </match-played>
+
+			    </matches-played>
 
 
 			</firstteam-player>
@@ -233,18 +248,25 @@
 '''
 
 #import libraries
+
 from flask import Flask, request
 from flask_restful import Resource, Api
 
 
 
+
+
 #create your app and api objects
+
 app = Flask(__name__)
 api = Api(app)
 
 
 
+
+
 #create your resources
+
 class ViewPlayer12(Resource):
 
 	def get(self):
@@ -271,7 +293,10 @@ class UpdatePlayer11(Resource):
 		return{'you have posted:':message}
 
 
+
+
 #add your resources to your api
+
 api.add_resource(ViewPlayer12, '/player-management/firstteam-players/12')
 api.add_resource(UpdatePlayer12, '/player-management/firstteam-players/12')
 
@@ -280,6 +305,9 @@ api.add_resource(UpdatePlayer11, '/player-management/firstteam-players/11')
 
 
 
+
+
 #run in debug mode
+
 if __name__=='__main__':
 	app.run(debug=True, port=8080)
