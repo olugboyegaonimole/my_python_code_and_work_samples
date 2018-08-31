@@ -77,6 +77,8 @@
 
 	#CREATE MODEL URIs
 
+	# scheme/domain/resource
+
 		# http://api.arsenal.com/player-management/firstteam-players - collection resource
 		# http://api.arsenal.com/player-management/academy-players - collection resource
 		# http://api.arsenal.com/staff-management/coaching-staff - collection resource
@@ -295,7 +297,9 @@ class UpdatePlayer11(Resource):
 
 
 
-#add your resources to your api
+#add your resources and URIs to your api
+
+# api.add_resource(resource, URI)
 
 api.add_resource(ViewPlayer12, '/player-management/firstteam-players/12')
 api.add_resource(UpdatePlayer12, '/player-management/firstteam-players/12')
