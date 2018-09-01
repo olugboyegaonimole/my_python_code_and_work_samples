@@ -70,3 +70,11 @@
 	# then go to the 'Authorization' tab and click on 'Update Request' in the upper right corner
 	
 	# hit the send button
+
+# 11 if you've tried several times to send one specific request and have gotten an error message each time, you can view the error message as follows:
+
+	# go to the most recent attempt
+
+	# click on any of the tabs: 'Authorization', 'Headers', 'Body', 'Pre-request Script', 'Tests'
+
+	# scroll down to the bottom of the page, click on the 'Body' tab at the bottom and view the error message
