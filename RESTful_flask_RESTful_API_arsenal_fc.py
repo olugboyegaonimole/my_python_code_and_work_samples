@@ -4,6 +4,9 @@
 	#Create Model URIs
 	#Determine Representations
 	#Assign HTTP Methods
+	#Logging
+	#Security
+	#Discovery
 
 
 
@@ -111,10 +114,10 @@
 '''
 	#DETERMINE REPRESENTATIONS
 
-		#THE BELOW USES XML
+		#THE BELOW IS WRITTEN IN XML
 
 
-		#COLLECTION RESOURCE - FIRST TEAM
+		#COLLECTION RESOURCE - FIRST TEAM PLAYERS
 
 			<firstteam-players size="26">
 			    <link rel="self" href="/firstteam-players"/>
@@ -135,7 +138,7 @@
 			</firstteam-players>
 
 
-		#SINGLETON RESOURCE - PLAYER
+		#SINGLETON RESOURCE - FIRST TEAM PLAYER
 			
 			<firstteam-player id="11">
 			    <link rel="self" href="/firstteam-players/11"/>
@@ -240,7 +243,11 @@
 
 
 
-	#ASSIGN HTTP METHODS 		# what do i write (and where do i write it) to map http operations to the appropriate URIs?
+
+
+	#ASSIGN HTTP METHODS 		
+
+	# what do i write (and where do i write it) to map http operations to the appropriate URIs????
 
 
 		#GET
@@ -260,34 +267,58 @@
 					HTTP GET /matches-played?startIndex=0&size=20
 
 
-		# browse all matches-played [Secondary Collection]
+			# browse all matches-played [Secondary Collection]
 
-			HTTP GET /firstteam-players/{id}/matches-played
-
-
-		# browse single firstteam-player or match-played [Primary Collection]
-
-			HTTP GET /firstteam-players/{id}
-			HTTP GET /matches-played/{id}
+				HTTP GET /firstteam-players/{id}/matches-played
 
 
-		# browse single match-played [Secondary Collection]
+			# browse single firstteam-player or match-played [Primary Collection]
 
-			HTTP GET /firstteam-players/{id}/matches-played/{id}
+				HTTP GET /firstteam-players/{id}
+				HTTP GET /matches-played/{id}
+
+
+			# browse single match-played [Secondary Collection]
+
+				HTTP GET /firstteam-players/{id}/matches-played/{id}
 
 
 		# create a firstteam-player or match-played
 
-			HTTP GET /firstteam-players
-			HTTP GET /matches-played
+			HTTP POST /firstteam-players
+			HTTP POST /matches-played
 
 			# the request payload will not contain any id attribute, as the server is responsible for deciding the id(?)
 
 
+		# update a firstteam-player or match-played
+
+			HTTP PUT /firstteam-players/{id}
+			HTTP PUT /matches-played/{id}
+
+
+		# delete a firstteam-player or match-played
+
+			HTTP DELETE /firstteam-players/{id}
+			HTTP DELETE /matches-played/{id}
+		
+
+		# applying or removing a match played to/from a player
+
+			# Applying
+
+			HTTP PUT /firstteam-players/{id}/matches-played 	#no {id} specified for matches-played: should this be PUT or POST??????
+ 
+			# Removing
+
+			HTTP DELETE /firstteam-players/{id}/matches-played/{id} 
 
 
 
 
+	#LOGGING
+	#SECURITY
+	#DISCOVERY
 
 
 '''
