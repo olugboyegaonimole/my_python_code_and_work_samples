@@ -1,8 +1,8 @@
 #How to design a REST API - STEPS
 
-	#Identify Object Model
-	#Create Model URIs
-	#Determine Representations
+	#Create Object Model
+	#Create URIs
+	#Create Representations
 	#Assign HTTP Methods
 	#Logging
 	#Security
@@ -13,20 +13,20 @@
 
 #EXPANSION OF STEPS
 
-	#Identify Object Model
+	#Create Object Model
 
 		#identify which objects will be resources
 		#identify which objects will be subresources
 		#assign a unique identifier to each resource and sub resource???
 
 
-	#Create Model URIs
+	#Create URIs
 
 		#assign a unique identifier to each resource and sub resource???
 
 
 
-	#Determine Representations
+	#Create Representations
 
 		#Collection Resource - Players
 		#Single Resource - Player
@@ -53,7 +53,7 @@
 
 #IMPLEMENTATION OF STEPS
 
-	#IDENTIFY YOUR OBJECT MODEL
+	#CREATE OBJECT MODEL
 
 		# collection resources
 
@@ -78,7 +78,7 @@
 
 
 
-	#CREATE MODEL URIs
+	#CREATE URIs
 
 	# scheme/domain/resource
 
@@ -112,12 +112,46 @@
 
 
 '''
-	#DETERMINE REPRESENTATIONS
+	#CREATE REPRESENTATIONS
 
 		#THE BELOW IS WRITTEN IN XML
 
 
-		#COLLECTION RESOURCE - FIRST TEAM PLAYERS
+		#TEMPLATE FOR REPRESENTATIONS
+
+			#COLLECTION RESOURCE
+
+				<collection-resource size="">
+					<link rel="self" href="/collection-resource"/>
+
+
+					<singleton-resource id="id">
+						<link rel="self" href="/collection-resource/id"/>
+					</singleton-resource>
+
+
+				</collection-resource>
+
+
+			#SUB-COLLECTION RESOURCE UNDER SINGLETON RESOURCE
+
+				<sub-collection-resource size="">
+					<link rel="self" href="/collection-resource/id/sub-collection-resource"/>
+
+
+					<sub-singleton-resource id="id">
+						<link rel="self" href="/collection-resource/id/sub-collection-resource/id"/>
+						<link rel="detail" href="/sub-collection-resource/id"/>
+					</sub-singleton-resource>
+
+
+				</sub-collection-resources>
+
+
+
+
+
+		#REPRESENTATION FOR COLLECTION RESOURCE - FIRST TEAM PLAYERS
 
 			<firstteam-players size="26">
 			    <link rel="self" href="/firstteam-players"/>
@@ -138,7 +172,7 @@
 			</firstteam-players>
 
 
-		#SINGLETON RESOURCE - FIRST TEAM PLAYER
+		#REPRESENTATION FOR SINGLETON RESOURCE - FIRST TEAM PLAYER
 			
 			<firstteam-player id="11">
 			    <link rel="self" href="/firstteam-players/11"/>
@@ -163,7 +197,7 @@
 			</firstteam-player>
 
 
-		#SUB COLLECTION RESOURCE - MATCHES PLAYED
+		#REPRESENTATION FOR SUB COLLECTION RESOURCE - MATCHES PLAYED
 
 			<matches-played size="38">
 			    <link rel="self" href="/matches-played"/>
@@ -190,7 +224,7 @@
 			</matches-played>
 
 
-		#SINGLETON RESOURCE IN SUB COLLECTION RESOURCE - MATCH PLAYED
+		#REPRESENTATION FOR SINGLETON RESOURCE IN SUB COLLECTION RESOURCE - MATCH PLAYED
 
 		    <match-played id="001">
 			    <link rel="self" href="/matches-played/001"/>
@@ -201,7 +235,7 @@
 			</match-played>
 
 
-		#SUB COLLECTION RESOURCE UNDER SINGLETON RESOURCE - MATCHES PLAYED UNDER SINGLE PLAYER
+		#REPRESENTATION FOR SUB COLLECTION RESOURCE UNDER SINGLETON RESOURCE - MATCHES PLAYED UNDER SINGLE PLAYER
 
 			<matches-played size="38">
 			    <link rel="self" href="/firstteam-players/11/matches-played"/>
@@ -230,7 +264,7 @@
 			</matches-played>
 
 
-		#SINGLETON RESOURCE UNDER SINGLETON RESOURCE - MATCH PLAYED UNDER SINGLE PLAYER
+		#REPRESENTATION FOR SINGLETON RESOURCE UNDER SINGLETON RESOURCE - MATCH PLAYED UNDER SINGLE PLAYER
 
 		    <match-played id="001">
 		    	<link rel="self" href="/firstteam-players/11/matches-played/001"/>
@@ -256,7 +290,7 @@
 		#DELETE
 
 
-		# browse all firstteam-players or matches-played [Primary Collection]
+		# Browse all firstteam-players or matches-played [Primary Collection]
 		
 			HTTP GET /firstteam-players
 			HTTP GET /matches-played
@@ -272,18 +306,18 @@
 				HTTP GET /firstteam-players/{id}/matches-played
 
 
-			# browse single firstteam-player or match-played [Primary Collection]
+			# browse a single firstteam-player or match-played [Primary Collection]
 
 				HTTP GET /firstteam-players/{id}
 				HTTP GET /matches-played/{id}
 
 
-			# browse single match-played [Secondary Collection]
+			# browse a single match-played [Secondary Collection]
 
 				HTTP GET /firstteam-players/{id}/matches-played/{id}
 
 
-		# create a firstteam-player or match-played
+		# Create a firstteam-player or match-played
 
 			HTTP POST /firstteam-players
 			HTTP POST /matches-played
@@ -291,25 +325,26 @@
 			# the request payload will not contain any id attribute, as the server is responsible for deciding the id(?)
 
 
-		# update a firstteam-player or match-played
+		# Update a firstteam-player or match-played
 
 			HTTP PUT /firstteam-players/{id}
 			HTTP PUT /matches-played/{id}
 
 
-		# delete a firstteam-player or match-played
+		# Delete a firstteam-player or match-played
 
 			HTTP DELETE /firstteam-players/{id}
 			HTTP DELETE /matches-played/{id}
 		
 
-		# applying or removing a match played to/from a player
+		# Applying or removing a match played to/from a player
 
 			# Applying
 
 			HTTP PUT /firstteam-players/{id}/matches-played 	#no {id} specified for matches-played: should this be PUT or POST??????
  
 			# Removing
+
 
 			HTTP DELETE /firstteam-players/{id}/matches-played/{id} 
 
@@ -319,7 +354,6 @@
 	#LOGGING
 	#SECURITY
 	#DISCOVERY
-
 
 '''
 

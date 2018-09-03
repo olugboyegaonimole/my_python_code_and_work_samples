@@ -31,6 +31,11 @@
 	#Compression
 	#Content Negotiation
 	#HATEOAS
+		#what is HATEOAS?
+			#hypermedia as the engine of application state
+			#implication: hypermedia links returned by the server drive the state of the application
+
+
 	#Idempotence
 	#Security Essentials
 	#Versioning
@@ -290,13 +295,13 @@
 
 #REST API Design Tutorial
 
-	#Identify Object Model
-	#Create Model URIs
-	#Determine Representations
+	#Create Object Model
+	#Create URIs
+	#Create Representations
 	#Assign HTTP Methods
 
 
-	#Identify Object Model
+	#Create Object Model
 
 		#identify which objects will be resources
 		
@@ -306,10 +311,10 @@
 
 
 
-	#Create Model URIs
+	#Create URIs
 
 
-	#Determine Representations
+	#Create Representations
 		#Collection of Device Resource
 		#Single Device Resource
 		#Configuration Resource Collection
@@ -337,7 +342,7 @@
 
 #IMPLEMENTATION OF STEPS
 
-	#IDENTIFY YOUR OBJECT MODEL
+	#CREATE OBJECT MODEL
 
 		# collection resources
 
@@ -362,9 +367,10 @@
 
 
 
-	#CREATE MODEL URIs
+	#CREATE URIs
 
 	# scheme/domain/resource
+
 
 		# http://api.arsenal.com/player-management/firstteam-players - collection resource
 		# http://api.arsenal.com/player-management/academy-players - collection resource
@@ -376,18 +382,11 @@
 		# http://api.arsenal.com/player-management/firstteam-players/{player-id}/matches-played - sub collection resource
 		# http://api.arsenal.com/staff-management/coaching-staff/{staff-id}/days-at-work - sub collection resource
 
-		# question: a singleton resource can have a sub collection resource, but can a collection resource have a sub collection resource?
-
 		# http://api.arsenal.com/player-management/firstteam-players/{player-id}/matches-played/{match-id} - singleton resource in sub collection resource
 		# http://api.arsenal.com/staff-management/coaching-staff/{staff-id}/days-at-work/{date-id} - singleton resource in sub collection resource
 
-
-
-
-
 		# http://api.arsenal.com/player-management/firstteam-players/11 - singleton resource - petr cech
 		# http://api.arsenal.com/player-management/firstteam-players/12 - singleton resource - danny welbeck
-
 
 		# http://api.arsenal.com/player-management/coaching-staff/31 - singleton resource - unai emery
 		# http://api.arsenal.com/player-management/coaching-staff/32 - singleton resource - juan carlos carcedo
@@ -395,13 +394,15 @@
 
 
 
+
+
 '''
-	#DETERMINE REPRESENTATIONS
+	#CREATE REPRESENTATIONS
 
 		#THE BELOW IS WRITTEN IN XML
 
 
-		#COLLECTION RESOURCE - FIRST TEAM PLAYERS
+		#REPRESENTATION FOR COLLECTION RESOURCE - FIRST TEAM PLAYERS
 
 			<firstteam-players size="26">
 			    <link rel="self" href="/firstteam-players"/>
@@ -422,7 +423,7 @@
 			</firstteam-players>
 
 
-		#SINGLETON RESOURCE - FIRST TEAM PLAYER
+		#REPRESENTATION FOR SINGLETON RESOURCE - FIRST TEAM PLAYER
 			
 			<firstteam-player id="11">
 			    <link rel="self" href="/firstteam-players/11"/>
@@ -447,7 +448,7 @@
 			</firstteam-player>
 
 
-		#SUB COLLECTION RESOURCE - MATCHES PLAYED
+		#REPRESENTATION FOR SUB COLLECTION RESOURCE - MATCHES PLAYED
 
 			<matches-played size="38">
 			    <link rel="self" href="/matches-played"/>
@@ -474,7 +475,7 @@
 			</matches-played>
 
 
-		#SINGLETON RESOURCE IN SUB COLLECTION RESOURCE - MATCH PLAYED
+		#REPRESENTATION FOR SINGLETON RESOURCE IN SUB COLLECTION RESOURCE - MATCH PLAYED
 
 		    <match-played id="001">
 			    <link rel="self" href="/matches-played/001"/>
@@ -485,7 +486,7 @@
 			</match-played>
 
 
-		#SUB COLLECTION RESOURCE UNDER SINGLETON RESOURCE - MATCHES PLAYED UNDER SINGLE PLAYER
+		#REPRESENTATION FOR SUB COLLECTION RESOURCE UNDER SINGLETON RESOURCE - MATCHES PLAYED UNDER SINGLE PLAYER
 
 			<matches-played size="38">
 			    <link rel="self" href="/firstteam-players/11/matches-played"/>
@@ -514,7 +515,7 @@
 			</matches-played>
 
 
-		#SINGLETON RESOURCE UNDER SINGLETON RESOURCE - MATCH PLAYED UNDER SINGLE PLAYER
+		#REPRESENTATION FOR SINGLETON RESOURCE UNDER SINGLETON RESOURCE - MATCH PLAYED UNDER SINGLE PLAYER
 
 		    <match-played id="001">
 		    	<link rel="self" href="/firstteam-players/11/matches-played/001"/>
