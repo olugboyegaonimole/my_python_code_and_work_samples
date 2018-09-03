@@ -227,7 +227,7 @@
 			</matches-played>
 
 
-		#SINGLETON RESOURCE UNDER SINGLETON RESOURCE- MATCH PLAYED UNDER SINGLE PLAYER
+		#SINGLETON RESOURCE UNDER SINGLETON RESOURCE - MATCH PLAYED UNDER SINGLE PLAYER
 
 		    <match-played id="001">
 		    	<link rel="self" href="/firstteam-players/11/matches-played/001"/>
@@ -240,14 +240,59 @@
 
 
 
-	#ASSIGN HTTP METHODS
+	#ASSIGN HTTP METHODS 		# what do i write (and where do i write it) to map http operations to the appropriate URIs?
+
 
 		#GET
 		#POST
 		#PUT
 		#DELETE
 
+
+		# browse all firstteam-players or matches-played [Primary Collection]
+		
+			HTTP GET /firstteam-players
+			HTTP GET /matches-played
+
+				#apply paging and filtering
+
+					HTTP GET /firstteam-players?startIndex=0&size=20
+					HTTP GET /matches-played?startIndex=0&size=20
+
+
+		# browse all matches-played [Secondary Collection]
+
+			HTTP GET /firstteam-players/{id}/matches-played
+
+
+		# browse single firstteam-player or match-played [Primary Collection]
+
+			HTTP GET /firstteam-players/{id}
+			HTTP GET /matches-played/{id}
+
+
+		# browse single match-played [Secondary Collection]
+
+			HTTP GET /firstteam-players/{id}/matches-played/{id}
+
+
+		# create a firstteam-player or match-played
+
+			HTTP GET /firstteam-players
+			HTTP GET /matches-played
+
+			# the request payload will not contain any id attribute, as the server is responsible for deciding the id(?)
+
+
+
+
+
+
+
+
 '''
+
+		
 
 #import libraries
 
