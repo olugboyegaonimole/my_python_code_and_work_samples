@@ -1,5 +1,10 @@
-#malfunctioining
-#after posting new data to the database, the get method on uri '/data/<string:argument>' began to fail. Investigate
+
+#further study:
+	# database connections
+	# viewing only selected fields/parameters from the database instead of the entire database
+
+
+#malfunction: after posting new data to the database, the get method on uri '/data/<string:argument>' began to fail. Investigate
 
 #investigation revealed that the get request failed because the new data had been posted using a key 'fish' that was different from the 
 
@@ -103,7 +108,7 @@ class Delete(Resource):
 
 # is this the step called 'assign http methods'?
 
-#looks like the add_resource arguments below are a http method and a URI
+# looks like the add_resource arguments below are a http method and a URI
 
 api.add_resource(Get1, '/data')
 api.add_resource(Get2, '/data/<string:argument>')
