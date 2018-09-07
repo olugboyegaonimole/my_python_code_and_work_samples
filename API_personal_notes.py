@@ -36,6 +36,7 @@
 # WHAT IS AN API?
 
 
+# a software intermediary that allows two applications to talk to each other
 
 
 # A PROGRAM THAT ALLOWS ONE PIECE OF SOFTWARE TO TALK TO ANOTHER
@@ -44,17 +45,16 @@
 # AN API IS A PROGRAM ON A SERVER THAT ALLOWS ME TO 
 	
 	#CONNECT MY WEB APP TO THE SERVER AND 
-	#REPLICATE THE SERVER'S SERVICES ON MY WEB APP
-	#THEN MY USERS CAN USE THE ITS SERVICES FROM MY APP
+	#REPLICATE THE SERVER'S SERVICES ON MY APP
+	#ALLOW MY USERS TO USE THE SERVER'S SERVICES FROM MY APP
 
 
 
 # AN API ALLOWS ME TO 
 
-	# integrate MY program with A WEBSITE and 
+	# integrate MY APP with A WEBSITE and 
 	
-	# allow MY PROGRAM to perform the operations available on the website
-
+	# allow MY APP to perform operations available on the website
 
 
 
@@ -67,7 +67,8 @@
 
 
 # a source of software building blocks 
-# the building blocks are put together by a programmer
+	
+	# the building blocks are THEN put together by a programmer
 
 
 
