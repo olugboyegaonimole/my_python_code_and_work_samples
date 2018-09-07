@@ -1,57 +1,66 @@
 #rest apis for chelseafc.com
 
 
+#PLAN for chelseafc
+
 #create resource model
 #create uris
 #create representations
 #assign methods
+#create api
 
 
 
-#create resource model
+### create resource model ###
 
 	#collection resources
 
-		#first-team-players
-		#coaching-staff
+		#first-team-players id 1
+		#coaching-staff id 2
+		#academy id 3
 
 	#singleton resources
 
-		#kepa arizabalaga
-		#maurizio sarri
-		#striker1
-		#striker2
-		#striker3
-		#striker4
-		#striker5
-		#striker6
+		#kepa arizabalaga 11
+		#maurizio sarri 21
+		#striker1 12
+		#striker2 13
+		#striker3 14
+		#striker4 15
+		#striker5 16
+		#striker6 17
 
 	#sub-collection resources
 
 		#matches-played
 		#days at work
+		#days in training
 
 
 
-#create uris
+### create uris ###
 
 	#for collection resources
 		#http://www.chelsea.com/player-management/first-team-players
 		#http://www.chelsea.com/staff-management/coaching-staff
+		#http://www.chelsea.com/staff-management/academy
 
 
 	#for singleton resources
 		#http://www.chelsea.com/player-management/first-team-players/{id}
 		#http://www.chelsea.com/staff-management/coaching-staff/{id}
+		#http://www.chelsea.com/staff-management/academy/{id}
 
 
 	#for sub collection resources
 		#http://www.chelsea.com/player-management/first-team-players/{id}/matches-played
 		#http://www.chelsea.com/staff-management/coaching-staff/{id}/days-at-work
+		#http://www.chelsea.com/staff-management/academy/{id}/days-in-training
+		
 
 '''
 
-#create representations
+### create representations ###
 
 # i need to create a database connection between the api and these representations
 
@@ -147,7 +156,7 @@
 
 
 
-#assign methods
+### assign methods ###
 
 	#get
 	#post
@@ -156,7 +165,7 @@
 
 
 
-	#get
+	#assign get
 		#collection resources
 
 		http get /first-team-players
@@ -178,7 +187,7 @@
 		http get /coaching-staff/{id}/days-at-work/{id}
 
 
-	#post
+	#assign post
 		#collection resources
 
 		http post /first-team-players
@@ -191,7 +200,7 @@
 		http get /coaching-staff/{id}/days-at-work
 
 
-	#put
+	#assign put
 		#singleton resources
 
 		http get /first-team-players/{id}
@@ -204,7 +213,7 @@
 		http get /coaching-staff/{id}/days-at-work/{id}
 
 
-	#delete	
+	#assign delete	
 		#singleton resources
 
 		http get /first-team-players/{id}
@@ -219,21 +228,50 @@
 '''
 
 
+### create api ###
+
+
+
+#PLAN for creating api
+
+	#import libraries
+	#create objects (Flask and Api)
+	#connect to database (or create database)
+	#create resources (collection and singleton)
+	#add resources (collection and singleton)
+	#run
+
+
+
+#IMPORT LIBRARIES
+
 from flask import Flask, request
 from flask_restful import Resource, Api 
 
 
 
+#CREATE FLASK AND API OBJECTS
+
 app = Flask(__name__)
 api = Api(app)
 
 
+
+#CONNECT TO DATABASE (OR CREATE DATABASE)
+
 database=[
 	{"departmentName":"first-team-players", "departmentId":1, "staffId":1, "staffName":"kepa arizabalaga", "age":23},
 	{"departmentName":"first-team-players", "departmentId":1, "staffId":2, "staffName":"victor moses", "age":28},
-	{"departmentName":"academy", "departmentId":1, "staffId":3, "staffName":"eden hazard", "age":25}
+	{"departmentName":"academy", "departmentId":2, "staffId":3, "staffName":"eden hazard", "age":25},
+	{"departmentName":"coaching-staff", "departmentId":3, "staffId":4, "staffName":"maurizio sarri", "age":56},
+
 	]
 
+
+
+#CREATE RESOURCES
+
+	#COLLECTION RESOURCES
 
 class ViewDatabase(Resource):
 
@@ -242,50 +280,96 @@ class ViewDatabase(Resource):
 		return {'the database is': database}
 
 
-class ViewDatabaseFields(Resource):
-
-	def get(self, argument):
-
-		for i in database:
-			for x,y in i.items():
-				result = [x if x=="departmentName"]
-
-		#result = [i for i in database if i == "departmentName"]
-
-		return {'the result is': result}
-
-
 
 class ViewFirstTeamPlayers(Resource):
 
-	def get(self, argument):
+	def get(self):
 
-		result = [i for i in database if i["departmentName"]==argument]
+		result = [i for i in database if i["departmentName"]=='first-team-players']
 
 		return {'first-team-players are':result}
 
 
 
+class ViewCoachingStaff(Resource):
+
+	def get(self):
+
+		result = [i for i in database if i["departmentName"]=='coaching-staff']
+
+		return {'the coaching staff are': result}
 
 
 
-api.add_resource(ViewDatabase, '/data')
+class ViewAcademy(Resource):
 
-api.add_resource(ViewDatabaseFields, '/data/')
+	def get(self):
 
-api.add_resource(ViewFirstTeamPlayers, '/<string:argument>')
+		result = [i for i in database if i["departmentName"]=='academy']
 
-'''
+		return {'the academy is': result}
+
+
+
+	#SINGLETON RESOURCES
+
+
+class ViewKepaArizabalaga(Resource):
+
+	def get(self):
+
+		result = [i for i in database if i["staffName"]=="kepa arizabalaga"]
+
+		return {'details for staff id no. 1 are': result  }
+
+
+
+class ViewFields(Resource): #under construction
+
+	def get(self, arg1):
+
+		return {'result is': database  }
+
+
+
+
+#ADD RESOURCES
+
+	#COLLECTION RESOURCES
+
+api.add_resource(ViewDatabase, '/')
+
+api.add_resource(ViewFirstTeamPlayers, '/first-team-players')
+
+api.add_resource(ViewAcademy, '/academy')
+
+api.add_resource(ViewCoachingStaff, '/coaching-staff')
+
+
+
+
+
+	#SINGLETON RESOURCES
+
 api.add_resource(ViewKepaArizabalaga, '/first-team-players/1')
 
+'''
 api.add_resource(ViewVictorMoses, '/first-team-players/2')
 
 api.add_resource(ViewEdenHazard, '/first-team-players/3')
 
-api.add_resource(ViewCoachingStaff, '/coaching-staff')
-
 '''
 
+
+
+	#SUNDRY RESOURCES
+
+api.add_resource(ViewFields, '/first-team-players?fields=<string:arg1>')
+
+
+
+
+#RUN
 
 if __name__ == '__main__':
 	app.run(debug=True, port=8080)
