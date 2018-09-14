@@ -174,7 +174,7 @@ while 1:
 	#check for a human win
 	if board.check_win('X'):
 		refresh_screen()
-		print('human won!!')
+		print('human wins!!')
 		break
 
 
