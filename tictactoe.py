@@ -22,7 +22,7 @@ import time
 	#get position
 	#update board
 	#show board
-	
+	#loop until win or draw
 	#award a win if applicable
 	#award a draw if applicable
 
