@@ -7,6 +7,30 @@ import os
 import time
 
 
+
+## PLAN ##
+#create board class
+	#constructor - initiate instance variables
+	#function to show board
+	#function to update board
+	#function to check for a win
+	#function to check for a draw
+	#function to select position for the bot
+#create board object
+#create function to clear terminal and show board status
+#main loop
+	#get position
+	#update board
+	#show board
+	
+	#award a win if applicable
+	#award a draw if applicable
+
+
+
+
+
+
 #the AI plays as O and the human plays as X
 
 #main Board class
@@ -30,7 +54,7 @@ class Board():
 
 
 	#function to show board
-	def show_status(self):
+	def show_board(self):
 
 		print('this is the board')
 		print()
@@ -43,7 +67,7 @@ class Board():
 
 
 	#function to update board
-	def update_status(self, place, player):
+	def update_board(self, place, player):
 
 		if self.board[place] == '':  #ie if the board position - corresponding to the [place] - is empty
 			self.board[place] = player #where human player is X and the AI is O
@@ -61,8 +85,8 @@ class Board():
 				break
 
 
-	#function to award a draw
-	def draw(self):
+	#function to check for a draw
+	def check_draw(self):
 
 		filled = []
 		for i in self.index:
@@ -74,7 +98,7 @@ class Board():
 
 
 	#function to select position for bot
-	def bot_turn(self):
+	def bot_choice(self):
 
 		moved = False
 		first_corner = None
@@ -142,7 +166,7 @@ board = Board()
 #create a function to refresh terminal and show board status
 def refresh_screen():
 	os.system('clear')
-	board.show_status()
+	board.show_board()
 	print()
 
 
@@ -165,21 +189,21 @@ while 1:
 
 
 	#update board with 'X' in player's position
-	board.update_status(player_position, 'X')
+	board.update_board(player_position, 'X')
 
 
 	refresh_screen()
 
 
-	#check for a human win
+	#award a human win
 	if board.check_win('X'):
 		refresh_screen()
 		print('human wins!!')
 		break
 
 
-	#check for a tie
-	if board.draw():
+	#award a draw
+	if board.check_draw():
 		refresh_screen()
 		print('it\'s a draw!!!')
 		break
@@ -191,29 +215,27 @@ while 1:
 	## BOT HAS A TURN ##
 
 
-	#take positional integer returned by bot_turn function and assign it to a bot_position variable
-
-	
-	bot_position = board.bot_turn()
+	#get bot's position
+	bot_position = board.bot_choice()
 
 
-	#update the board with the bot's position
-	board.update_status(bot_position, 'O')
+	#update the board with 'O' in bot's position
+	board.update_board(bot_position, 'O')
 
 
 	#bot has made a move, therefore increment bot_moves variable by 1
 	board.bot_moves += 1	
 
 
-	#check for a bot win
+	#award a bot win
 	if board.check_win('O'):
 		refresh_screen()
 		print('bot wins!!!')
 		break
 
 
-	#check for a draw
-	if board.draw():
+	#award a draw
+	if board.check_draw():
 		refresh_screen()
 		print('draw!!!')
 		break
